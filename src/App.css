@@ -5,11 +5,13 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
+  float: right;
+  padding: 48px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: gray;
+  height: 180px;
   padding: 20px;
   color: white;
 }
@@ -22,7 +24,25 @@
   font-size: large;
 }
 
+.footer {
+  float: right;
+  font-weight: bold;
+  color: darkgray;
+}
+
+.search-result {
+	background-color: yellowgreen;
+}
+
+.search-result ul {
+	list-style-type: none;
+}
+
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
