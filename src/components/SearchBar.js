@@ -24,7 +24,6 @@ class SearchBar extends Component {
 
   render() {
     if (this.state.search) {
-			console.log('search');
       return <Redirect to="/search" />;
     }
 

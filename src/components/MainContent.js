@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Main } from "../styles";
 import Home from "./Home";
@@ -32,4 +32,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps, null)(MainContent);
+export default withRouter(connect(mapStateToProps, null)(MainContent));
