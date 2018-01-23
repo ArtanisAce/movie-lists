@@ -1,6 +1,6 @@
 import React from "react";
-import tmdbLogo from "./powered-by-tmdb.svg";
-import { Header, Footer, Logo } from "./styles";
+import tmdbLogo from "../powered-by-tmdb.svg";
+import { Header, Footer, Logo } from "../styles";
 import SearchBar from "./SearchBar";
 
 const Home = () => {

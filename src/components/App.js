@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { getConfig } from "./actions/index";
+import { getConfig } from "../actions/index";
 import NavBar from "./NavBar";
 import MainContent from "./MainContent";
 

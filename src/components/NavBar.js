@@ -8,12 +8,20 @@ const NavigationBar = styled.nav`
   height: 72px;
 `;
 
+const NavLink = styled(Link)`
+  color: palevioletred;
+	font-weight: bold;
+	padding: 24px;
+	border-left: 1px solid black;
+	width: 150px;
+`
+
 class NavBar extends Component {
   render() {
     return (
       <NavigationBar>
-        <Link to="/">Home</Link>
-        <Link to="/movie-list">Movie List</Link>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/movie-list">Movie List</NavLink>
       </NavigationBar>
     );
   }

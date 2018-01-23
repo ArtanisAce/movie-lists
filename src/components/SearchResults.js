@@ -3,8 +3,8 @@ import { bindActionCreators } from "redux";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { addFilm } from "./actions/index";
-import { List, MoviePoster } from "./styles";
+import { addFilm } from "../actions/index";
+import { List, MoviePoster } from "../styles";
 
 const AddMovieBtn = styled.button`
   display: block;
@@ -33,7 +33,7 @@ class SearchResults extends Component {
   }
 
   render() {
-    const tmdbConfiguration = this.props.config;
+		const tmdbConfiguration = this.props.config;
 
     if (Object.keys(tmdbConfiguration).length === 0 || !this.props.filmsResult.length) {
       return <div> Loading... </div>;
