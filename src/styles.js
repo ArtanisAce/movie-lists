@@ -12,13 +12,6 @@ export const Logo = styled.img`
   margin-right: 16px;
 `;
 
-export const Header = styled.div`
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-`;
-
 export const Footer = styled.footer`
   float: left;
   font-weight: bold;

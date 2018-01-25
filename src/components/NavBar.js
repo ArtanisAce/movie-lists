@@ -4,32 +4,50 @@ import { Link } from "react-router-dom";
 
 const NavigationBar = styled.nav`
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 	align-items: center;
+	flex-wrap: wrap;
   background-color: red;
   position: static;
-  height: 72px;
 	padding: 24px;
 `;
 
-const NavLink = styled(Link)`
+const Title = styled.h1`
+  padding: 24px;
+	flex: 3;
+  color: white;
+`;
+
+const NavLink = styled(Link) `
   color: palevioletred;
 	font-weight: bold;
-	flex: 1;
-	text-align: right;
+	margin: 0 24px;
+	text-align: center;
+`
+
+const LinkWrapper = styled.span`
 `
 
 class NavBar extends Component {
-  render() {
-    return (
-      <NavigationBar>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/movie-list">Movie List</NavLink>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/logout">Logout</NavLink>
-      </NavigationBar>
-    );
-  }
+	render() {
+		return (
+			<NavigationBar>
+				<Title>MovieLists</Title>
+				<LinkWrapper>
+					<NavLink to="/">Home</NavLink>
+				</LinkWrapper>
+				<LinkWrapper>
+					<NavLink to="/movie-list">Movie List</NavLink>
+				</LinkWrapper>
+				<LinkWrapper>
+					<NavLink to="/login">Login</NavLink>
+				</LinkWrapper>
+				<LinkWrapper>
+					<NavLink to="/logout">Logout</NavLink>
+				</LinkWrapper>
+			</NavigationBar>
+		);
+	}
 }
 
 export default NavBar;
