@@ -4,12 +4,12 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { addFilm } from "../actions/index";
-import { List, MoviePoster } from "../styles";
+import { List, MoviePoster, MovieBox } from "../styles";
 
 const AddMovieBtn = styled.button`
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   line-height: 30px;
   border: 2px solid #f5f5f5;
   border-radius: 50%;
@@ -35,16 +35,20 @@ class SearchResults extends Component {
   render() {
 		const tmdbConfiguration = this.props.config;
 
-    if (Object.keys(tmdbConfiguration).length === 0 || !this.props.filmsResult.length) {
-      return <div> Loading... </div>;
-    }
+    if (Object.keys(tmdbConfiguration).length === 0) {
+      return <div> An error ocurred :( </div>;
+		}
+		
+		if (!this.props.filmsResult.length) {
+			return <div> Loading... </div>
+		}
 
     return (
       <div className="search-result">
         <List>
           {this.props.filmsResult.map((movie, i) => {
             return (
-              <li key={i}>
+              <MovieBox key={i}>
                 <Link to={`/movie/${movie.id}`}>
                   {movie.title}({movie.release_date.slice(0, 4)})
                 </Link>
@@ -56,7 +60,7 @@ class SearchResults extends Component {
                 <AddMovieBtn onClick={() => this.addMovie(movie.id)}>
                   +
                 </AddMovieBtn>
-              </li>
+              </MovieBox>
             );
           })}
         </List>

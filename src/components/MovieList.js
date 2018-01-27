@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { List, MoviePoster } from "../styles";
+import { List, MoviePoster, MovieBox } from "../styles";
 
 //TODO: meter flexbox / CSS Grid
 
@@ -17,7 +17,7 @@ const MovieList = props => {
 	const tmdbConfiguration = props.config;
 	console.log(tmdbConfiguration);
 
-	if (Object.keys(tmdbConfiguration).length === 0 || !props.filmsList.length) {
+	if (!props.filmsList.length) {
 		return <div> No movies added! :( </div>;
 	}
 
@@ -29,7 +29,7 @@ const MovieList = props => {
 		<List>
 			{props.filmsList.map((movie, i) => {
 				return (
-					<div key={i}>
+					<MovieBox key={i}>
 						{/* <Link to={`/movie/${movie.id}`}>
               {movie.title}({movie.release_date.slice(0, 4)})
             </Link> */}
@@ -41,7 +41,7 @@ const MovieList = props => {
 								.images.poster_sizes[0]}${movie.poster_path}`}
 							alt={`${movie.title} poster`}
 						/>
-					</div>
+					</MovieBox>
 				);
 			})}
 		</List>
@@ -49,6 +49,7 @@ const MovieList = props => {
 };
 
 const mapStateToProps = state => {
+	console.log(state.filmsList);
 	return {
 		filmsList: state.filmsList,
 		config: state.config

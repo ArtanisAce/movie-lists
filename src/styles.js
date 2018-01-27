@@ -22,7 +22,16 @@ export const Footer = styled.footer`
  Lists components 
 */
 
-export const List = styled.ul`list-style-type: none;`;
+export const List = styled.ul`
+	list-style-type: none;
+`;
+
+export const MovieBox = styled.li`
+	border: 1px solid black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+`;
 
 /*
  List items
