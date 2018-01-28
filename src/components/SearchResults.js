@@ -7,7 +7,7 @@ import { addFilm } from "../actions/index";
 import { List, MoviePoster, MovieBox } from "../styles";
 
 const AddMovieBtn = styled.button`
-  display: block;
+  display:  ${props => props.hideButton ? 'none' :'block'};
   width: 34px;
   height: 34px;
   line-height: 30px;
@@ -27,9 +27,16 @@ const AddMovieBtn = styled.button`
 `;
 
 class SearchResults extends Component {
+
+	constructor() {
+    super();
+    this.state = { hideButton: {} };
+  }
+
   addMovie(movieId) {
     const film = this.props.filmsResult.find(movie => movie.id === movieId);
-    this.props.addFilm(film);
+		this.props.addFilm(film);
+		this.setState({hideButton: Object.assign(this.state.hideButton, {[movieId]: true})});
   }
 
   render() {
@@ -57,7 +64,7 @@ class SearchResults extends Component {
                     .images.poster_sizes[0]}${movie.poster_path}`}
                   alt={`${movie.title} poster`}
                 />
-                <AddMovieBtn onClick={() => this.addMovie(movie.id)}>
+                <AddMovieBtn hideButton={this.state.hideButton[movie.id]} onClick={() => this.addMovie(movie.id)}>
                   +
                 </AddMovieBtn>
               </MovieBox>

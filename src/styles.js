@@ -1,4 +1,28 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+/*
+	Animations
+*/
+
+// const rotate360 = keyframes`
+//   from {
+//     transform: rotate(0deg);
+//   }
+
+//   to {
+//     transform: rotate(360deg);
+//   }
+// `;
+
+const fadeIn = keyframes`
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+`;
 
 /*
  Home page
@@ -31,6 +55,7 @@ export const MovieBox = styled.li`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	animation: ${fadeIn} 1s;
 `;
 
 /*
@@ -38,4 +63,5 @@ export const MovieBox = styled.li`
 */
 
 export const MoviePoster = styled.img`display: inline-block;`;
+
 
