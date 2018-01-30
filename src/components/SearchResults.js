@@ -7,7 +7,7 @@ import { addFilm } from "../actions/index";
 import { List, MoviePoster, MovieBox } from "../styles";
 
 const AddMovieBtn = styled.button`
-  display:  ${props => props.hideButton ? 'none' :'block'};
+  display:  ${props => props.hideButton ? 'none' : 'block'};
   width: 34px;
   height: 34px;
   line-height: 30px;
@@ -26,65 +26,75 @@ const AddMovieBtn = styled.button`
   }
 `;
 
+const Plot = styled.div`
+	font-style: italic;
+	font-size: 12px;
+`;
+
 class SearchResults extends Component {
 
 	constructor() {
-    super();
-    this.state = { hideButton: {} };
-  }
+		super();
+		this.state = { hideButton: {} };
+	}
 
-  addMovie(movieId) {
-    const film = this.props.filmsResult.find(movie => movie.id === movieId);
+	addMovie(movieId) {
+		const film = this.props.filmsResult.find(movie => movie.id === movieId);
 		this.props.addFilm(film);
-		this.setState({hideButton: Object.assign(this.state.hideButton, {[movieId]: true})});
-  }
+		this.setState({ hideButton: Object.assign(this.state.hideButton, { [movieId]: true }) });
+	}
 
-  render() {
+	render() {
 		const tmdbConfiguration = this.props.config;
 
-    if (Object.keys(tmdbConfiguration).length === 0) {
-      return <div> An error ocurred :( </div>;
+		if (Object.keys(tmdbConfiguration).length === 0) {
+			return <div> An error ocurred :( </div>;
 		}
-		
+
 		if (!this.props.filmsResult.length) {
 			return <div> Loading... </div>
 		}
 
-    return (
-      <div className="search-result">
-        <List>
-          {this.props.filmsResult.map((movie, i) => {
-            return (
-              <MovieBox key={i}>
-                <Link to={`/movie/${movie.id}`}>
-                  {movie.title}({movie.release_date.slice(0, 4)})
-                </Link>
-                <MoviePoster
-                  src={`${tmdbConfiguration.images.base_url}/${tmdbConfiguration
-                    .images.poster_sizes[0]}${movie.poster_path}`}
-                  alt={`${movie.title} poster`}
-                />
-                <AddMovieBtn hideButton={this.state.hideButton[movie.id]} onClick={() => this.addMovie(movie.id)}>
-                  +
+		console.log(this.props.filmsResult);
+
+		return (
+			<div className="search-result">
+				<List>
+					{this.props.filmsResult.map((movie, i) => {
+						return (
+							<MovieBox key={i}>
+								<Link to={`/movie/${movie.id}`}>
+									{`${movie.title} (${movie.release_date.slice(0, 4)})`}
+								</Link>
+								<Plot>
+									{movie.overview}
+								</Plot>
+								<MoviePoster
+									src={`${tmdbConfiguration.images.base_url}/${tmdbConfiguration
+										.images.poster_sizes[0]}${movie.poster_path}`}
+									alt={`${movie.title} poster`}
+								/>
+								<AddMovieBtn hideButton={this.state.hideButton[movie.id]} onClick={() => this.addMovie(movie.id)}>
+									+
                 </AddMovieBtn>
-              </MovieBox>
-            );
-          })}
-        </List>
-      </div>
-    );
-  }
+							</MovieBox>
+						);
+					})}
+				</List>
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = state => {
-  return {
-    filmsResult: state.filmsResult,
-    config: state.config
-  };
+	return {
+		filmsResult: state.filmsResult,
+		config: state.config
+	};
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addFilm }, dispatch);
+	return bindActionCreators({ addFilm }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);
