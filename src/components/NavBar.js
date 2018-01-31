@@ -3,10 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const NavigationBar = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
   background-color: lightblue;
   position: static;
   padding: 24px;
@@ -29,6 +25,11 @@ const LinkWrapper = styled.li`
 `;
 
 const NavList = styled.ul`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style-type: none;
 `;
 
 class NavBar extends Component {
