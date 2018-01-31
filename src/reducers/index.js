@@ -5,8 +5,8 @@ import getConfig from "./reducer_config";
 
 const rootReducer = combineReducers({
   filmsResult: filmReducer,
-	filmsList: addFilmReducer,
-	config: getConfig
+  filmsList: addFilmReducer,
+  config: getConfig
 });
 
 export default rootReducer;

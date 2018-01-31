@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
 /*
-	Animations
+  Animations
 */
 
 // const rotate360 = keyframes`
@@ -15,13 +15,13 @@ import styled, { keyframes } from "styled-components";
 // `;
 
 const fadeIn = keyframes`
-	from {
-		opacity: 0;
-	}
+  from {
+    opacity: 0;
+  }
 
-	to {
-		opacity: 1;
-	}
+  to {
+    opacity: 1;
+  }
 `;
 
 /*
@@ -47,15 +47,15 @@ export const Footer = styled.footer`
 */
 
 export const List = styled.ul`
-	list-style-type: none;
+  list-style-type: none;
 `;
 
 export const MovieBox = styled.li`
-	border: 1px solid black;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	animation: ${fadeIn} 1s;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: ${fadeIn} 1s;
 `;
 
 /*

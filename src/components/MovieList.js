@@ -14,46 +14,46 @@ const Movie = styled(Link) `
 `;
 
 const MovieList = props => {
-	const tmdbConfiguration = props.config;
-	console.log(tmdbConfiguration);
+  const tmdbConfiguration = props.config;
+  console.log(tmdbConfiguration);
 
-	if (!props.filmsList.length) {
-		return <div> No movies added! :( </div>;
-	}
+  if (!props.filmsList.length) {
+    return <div> No movies added! :( </div>;
+  }
 
-	if (Object.keys(tmdbConfiguration).length === 0) {
-		return <div> An error ocurred! :(</div>
-	}
+  if (Object.keys(tmdbConfiguration).length === 0) {
+    return <div> An error ocurred! :(</div>
+  }
 
-	return (
-		<List>
-			{props.filmsList.map((movie, i) => {
-				return (
-					<MovieBox key={i}>
-						{/* <Link to={`/movie/${movie.id}`}>
+  return (
+    <List>
+      {props.filmsList.map((movie, i) => {
+        return (
+          <MovieBox key={i}>
+            {/* <Link to={`/movie/${movie.id}`}>
               {movie.title}({movie.release_date.slice(0, 4)})
             </Link> */}
-						<Movie to={`/movie/${movie.id}`}>
-							{movie.title}({movie.release_date.slice(0, 4)})
+            <Movie to={`/movie/${movie.id}`}>
+              {movie.title}({movie.release_date.slice(0, 4)})
             </Movie>
-						<MoviePoster
-							src={`${tmdbConfiguration.images.base_url}/${tmdbConfiguration
-								.images.poster_sizes[0]}${movie.poster_path}`}
-							alt={`${movie.title} poster`}
-						/>
-					</MovieBox>
-				);
-			})}
-		</List>
-	);
+            <MoviePoster
+              src={`${tmdbConfiguration.images.base_url}/${tmdbConfiguration
+                .images.poster_sizes[0]}${movie.poster_path}`}
+              alt={`${movie.title} poster`}
+            />
+          </MovieBox>
+        );
+      })}
+    </List>
+  );
 };
 
 const mapStateToProps = state => {
-	console.log(state.filmsList);
-	return {
-		filmsList: state.filmsList,
-		config: state.config
-	};
+  console.log(state.filmsList);
+  return {
+    filmsList: state.filmsList,
+    config: state.config
+  };
 };
 
 export default connect(mapStateToProps, null)(MovieList);

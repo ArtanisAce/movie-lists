@@ -8,28 +8,28 @@ import MovieList from "./MovieList";
 import SearchResults from "./SearchResults";
 
 const MainContent = props =>
-	props.error ? (
-		<div>Oops, something went wrong :(</div>
-	) : (
-			<Main>
-				<Switch>
-					<Route exact path="/" component={Home} />
-					<Route path="/search" component={SearchResults} />
-					<Route path="/movie/:id" component={Movie} />
-					<Route path="/movie-list" component={MovieList} />
-				</Switch>
-			</Main>
-		);
+  props.error ? (
+    <div>Oops, something went wrong :(</div>
+  ) : (
+      <Main>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/search" component={SearchResults} />
+          <Route path="/movie/:id" component={Movie} />
+          <Route path="/movie-list" component={MovieList} />
+        </Switch>
+      </Main>
+    );
 
 const mapStateToProps = state => {
-	if (state.error) {
-		// GITANADA, solo es un workaround :)
-		console.error(state.error);
-	}
+  if (state.error) {
+    // GITANADA, solo es un workaround :)
+    console.error(state.error);
+  }
 
-	return {
-		error: state.error
-	};
+  return {
+    error: state.error
+  };
 };
 
 export default withRouter(connect(mapStateToProps, null)(MainContent));

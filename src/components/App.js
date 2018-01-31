@@ -8,7 +8,7 @@ import MainContent from "./MainContent";
 
 class App extends Component {
   componentWillMount() {
-		this.props.getConfig();
+    this.props.getConfig();
   }
 
   render() {
