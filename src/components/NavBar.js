@@ -3,51 +3,56 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const NavigationBar = styled.nav`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
-  background-color: red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: lightblue;
   position: static;
-	padding: 24px;
+  padding: 24px;
 `;
 
 const Title = styled.h1`
   padding: 24px;
-	flex: 3;
+  flex: 3;
   color: white;
 `;
 
 const NavLink = styled(Link) `
   color: palevioletred;
-	font-weight: bold;
-	margin: 0 24px;
-	text-align: center;
+  font-weight: bold;
+  margin: 0 24px;
+  text-align: center;
 `
 
-const LinkWrapper = styled.span`
-`
+const LinkWrapper = styled.li`
+`;
+
+const NavList = styled.ul`
+`;
 
 class NavBar extends Component {
-	render() {
-		return (
-			<NavigationBar>
-				<Title>MovieLists</Title>
-				<LinkWrapper>
-					<NavLink to="/">Home</NavLink>
-				</LinkWrapper>
-				<LinkWrapper>
-					<NavLink to="/movie-list">Movie List</NavLink>
-				</LinkWrapper>
-				<LinkWrapper>
-					<NavLink to="/login">Login</NavLink>
-				</LinkWrapper>
-				<LinkWrapper>
-					<NavLink to="/logout">Logout</NavLink>
-				</LinkWrapper>
-			</NavigationBar>
-		);
-	}
+  render() {
+    return (
+      <NavigationBar>
+        <Title>MovieLists</Title>
+        <NavList>
+          <LinkWrapper>
+            <NavLink to="/">Home</NavLink>
+          </LinkWrapper>
+          <LinkWrapper>
+            <NavLink to="/movie-list">Movie List</NavLink>
+          </LinkWrapper>
+          <LinkWrapper>
+            <NavLink to="/login">Login</NavLink>
+          </LinkWrapper>
+          <LinkWrapper>
+            <NavLink to="/logout">Logout</NavLink>
+          </LinkWrapper>
+        </NavList>
+      </NavigationBar>
+    );
+  }
 }
 
 export default NavBar;
