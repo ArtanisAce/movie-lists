@@ -30,7 +30,7 @@ const fadeIn = keyframes`
 
 export const Main = styled.div`text-align: center;`;
 
-export const Logo = styled.img`
+export const TMDBLogo = styled.img`
   float: right;
   height: 48px;
   margin-right: 16px;

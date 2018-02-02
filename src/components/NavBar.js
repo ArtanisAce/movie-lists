@@ -1,56 +1,56 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import arnieLogo from '../svg/arnold-schwarzenegger.svg';
 
-const NavigationBar = styled.nav`
+const NavigationBar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row wrap;
   background-color: lightblue;
   position: static;
-  padding: 24px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
 `;
 
 const Title = styled.h1`
-  padding: 24px;
-  flex: 3;
   color: white;
+  margin-left: 24px;
+  display: inline-block;
+`;
+
+const ArnieLogo = styled.img`
+  height: 72px;
+  align-self: flex-start;
+`;
+
+const LinkContainer = styled.nav`
+  display: flex;
 `;
 
 const NavLink = styled(Link) `
-  color: palevioletred;
+  color: gray;
   font-weight: bold;
   margin: 0 24px;
   text-align: center;
+  text-decoration: none;
 `
-
-const LinkWrapper = styled.li`
-`;
-
-const NavList = styled.ul`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-wrap: wrap;
-  list-style-type: none;
-`;
 
 class NavBar extends Component {
   render() {
     return (
-      <NavigationBar>
-        <Title>MovieLists</Title>
-        <NavList>
-          <LinkWrapper>
-            <NavLink to="/">Home</NavLink>
-          </LinkWrapper>
-          <LinkWrapper>
-            <NavLink to="/movie-list">Movie List</NavLink>
-          </LinkWrapper>
-          <LinkWrapper>
-            <NavLink to="/login">Login</NavLink>
-          </LinkWrapper>
-          <LinkWrapper>
-            <NavLink to="/logout">Logout</NavLink>
-          </LinkWrapper>
-        </NavList>
+      <NavigationBar role="navigation">
+        <div>
+          <Title>MovieLists</Title>
+          <ArnieLogo src={arnieLogo} alt="aeeeeeee"/>
+        </div>
+        <LinkContainer>
+          <NavLink to="/">HOME</NavLink>
+          <NavLink to="/movie-list">MOVIE LIST</NavLink>
+          <NavLink to="/login">LOGIN</NavLink>
+          <NavLink to="/logout">LOGOUT</NavLink>
+        </LinkContainer>
       </NavigationBar>
     );
   }

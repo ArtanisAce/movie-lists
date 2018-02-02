@@ -6,6 +6,8 @@ injectGlobal`
     src: url('../fonts/Operator-Mono.ttf');
   } */
 
+  * { box-sizing: border-box; }
+
   body {
     margin: 0;
     padding: 0;
