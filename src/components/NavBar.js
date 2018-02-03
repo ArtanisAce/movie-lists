@@ -25,6 +25,10 @@ const ArnieLogo = styled.img`
   align-self: flex-start;
 `;
 
+const LogoContainer = styled.div`
+  display: flex;
+`;
+
 const LinkContainer = styled.nav`
   display: flex;
 `;
@@ -41,10 +45,10 @@ class NavBar extends Component {
   render() {
     return (
       <NavigationBar role="navigation">
-        <div>
+        <LogoContainer>
           <Title>MovieLists</Title>
           <ArnieLogo src={arnieLogo} alt="aeeeeeee"/>
-        </div>
+        </LogoContainer>
         <LinkContainer>
           <NavLink to="/">HOME</NavLink>
           <NavLink to="/movie-list">MOVIE LIST</NavLink>

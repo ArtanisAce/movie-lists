@@ -29,6 +29,7 @@ const AddMovieBtn = styled.button`
 const Plot = styled.div`
   font-style: italic;
   font-size: 12px;
+  width: 300px;
 `;
 
 class SearchResults extends Component {

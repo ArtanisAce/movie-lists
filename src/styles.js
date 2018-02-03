@@ -51,6 +51,7 @@ export const List = styled.ul`
 `;
 
 export const MovieBox = styled.li`
+  padding: 24px;
   border: 1px solid black;
   display: flex;
   justify-content: space-between;
