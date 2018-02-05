@@ -30,9 +30,6 @@ const MovieList = props => {
       {props.filmsList.map((movie, i) => {
         return (
           <MovieBox key={i}>
-            {/* <Link to={`/movie/${movie.id}`}>
-              {movie.title}({movie.release_date.slice(0, 4)})
-            </Link> */}
             <Movie to={`/movie/${movie.id}`}>
               {movie.title}({movie.release_date.slice(0, 4)})
             </Movie>

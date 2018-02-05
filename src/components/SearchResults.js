@@ -56,8 +56,6 @@ class SearchResults extends Component {
       return <div> Loading... </div>
     }
 
-    console.log(this.props.filmsResult);
-
     return (
       <div className="search-result">
         <List>
