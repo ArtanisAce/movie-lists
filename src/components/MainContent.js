@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Main } from "../styles";
 import Home from "./Home";
 import Movie from "./Movie";
-import MovieList from "./MovieList";
+import UserList from "./UserList";
 import SearchResults from "./SearchResults";
 
 const MainContent = props =>
@@ -16,7 +16,7 @@ const MainContent = props =>
           <Route exact path="/" component={Home} />
           <Route path="/search" component={SearchResults} />
           <Route path="/movie/:id" component={Movie} />
-          <Route path="/movie-list" component={MovieList} />
+          <Route path="/movie-list" component={UserList} />
         </Switch>
       </Main>
     );

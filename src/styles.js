@@ -14,7 +14,7 @@ import styled, { keyframes, css } from "styled-components";
 //   }
 // `;
 
-const fadeIn = keyframes`
+export const fadeIn = keyframes`
   from {
     opacity: 0;
   }
@@ -41,29 +41,6 @@ export const Footer = styled.footer`
   font-weight: bold;
   color: darkgray;
 `;
-
-/*
- Lists components 
-*/
-
-export const List = styled.ul`
-  list-style-type: none;
-`;
-
-export const MovieBox = styled.li`
-  padding: 24px;
-  border: 1px solid black;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  animation: ${fadeIn} 1s;
-`;
-
-/*
- List items
-*/
-
-export const MoviePoster = styled.img`display: inline-block;`;
 
 /*
   Media Queries config in styled-components

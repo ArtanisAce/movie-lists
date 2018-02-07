@@ -46,7 +46,7 @@ class NavBar extends Component {
     return (
       <NavigationBar role="navigation">
         <LogoContainer>
-          <Title>MovieLists</Title>
+          <Title>UserLists</Title>
           <ArnieLogo src={arnieLogo} alt="aeeeeeee"/>
         </LogoContainer>
         <LinkContainer>
