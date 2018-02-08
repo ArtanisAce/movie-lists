@@ -61,7 +61,7 @@ export default (props) => {
         alt={`${props.movie.title} poster`}
       />
       {props.addMovieButton && 
-      <AddMovieBtn hideButton={props.hideButton && props.hideButton} onClick={() => props.addMovie(props.movie.id)}>
+      <AddMovieBtn hideButton={props.hideButton} onClick={() => props.addMovie(props.movie.id)}>
         +
       </AddMovieBtn>}
     </BoxContainer>

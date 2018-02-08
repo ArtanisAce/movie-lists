@@ -8,14 +8,14 @@ class SearchResults extends Component {
 
   constructor() {
     super();
-    this.state = { hideButton: {} };
+    this.state = { hideButtons: {} };
     this.addMovie = this.addMovie.bind(this);
   }
 
   addMovie(movieId) {
     const film = this.props.filmsResult.find(movie => movie.id === movieId);
     this.props.addFilm(film);
-    this.setState({ hideButton: Object.assign(this.state.hideButton, { [movieId]: true }) });
+    this.setState({ hideButtons: Object.assign(this.state.hideButtons, { [movieId]: true }) });
   }
 
   render() {
@@ -32,11 +32,14 @@ class SearchResults extends Component {
     const movieBoxProps = {
       addMovieButton: true,
       tmdbConfiguration: tmdbConfiguration,
-      addMovie: this.addMovie
+      addMovie: this.addMovie,
     }
 
     return (
-      <MovieList films={this.props.filmsResult} movieBoxProps={movieBoxProps} />
+      <MovieList
+        films={this.props.filmsResult}
+        movieBoxProps={movieBoxProps}
+        hideButtons={this.state.hideButtons} />
     );
   }
 }
