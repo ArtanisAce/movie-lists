@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import arnieLogo from '../svg/arnold-schwarzenegger.svg';
@@ -41,23 +41,22 @@ const NavLink = styled(Link) `
   text-decoration: none;
 `
 
-class NavBar extends Component {
-  render() {
-    return (
-      <NavigationBar role="navigation">
-        <LogoContainer>
-          <Title>UserLists</Title>
-          <ArnieLogo src={arnieLogo} alt="aeeeeeee"/>
-        </LogoContainer>
-        <LinkContainer>
-          <NavLink to="/">HOME</NavLink>
-          <NavLink to="/movie-list">MOVIE LIST</NavLink>
-          <NavLink to="/login">LOGIN</NavLink>
-          <NavLink to="/logout">LOGOUT</NavLink>
-        </LinkContainer>
-      </NavigationBar>
-    );
-  }
+const NavBar = (props) => {
+  return (
+    <NavigationBar role="navigation">
+      <LogoContainer>
+        <Title>Movie Lists</Title>
+        <ArnieLogo src={arnieLogo} alt="aeeeeeee" />
+      </LogoContainer>
+      <LinkContainer>
+        <NavLink to="/">HOME</NavLink>
+        <NavLink to="/movie-list">MOVIE LIST</NavLink>
+        <NavLink to="/login">LOGIN</NavLink>
+        <NavLink to="/logout">LOGOUT</NavLink>
+      </LinkContainer>
+    </NavigationBar>
+  );
+
 }
 
 export default NavBar;

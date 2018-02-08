@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import MovieBox from "./MovieBox";
 
@@ -6,7 +7,7 @@ export const List = styled.ul`
   list-style-type: none;
 `;
 
-export default (props) => {
+const MovieList = (props) => {
 
   return (
     <List>
@@ -19,4 +20,11 @@ export default (props) => {
       )}
     </List>
   )
+}
+
+export default MovieList;
+
+MovieList.PropTypes = {
+  films: PropTypes.array.isRequired,
+  movieBoxProps: PropTypes.object.isRequired
 }

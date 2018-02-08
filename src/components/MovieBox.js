@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { fadeIn } from "../styles";
@@ -45,7 +46,7 @@ const Plot = styled.div`
   width: 300px;
 `;
 
-export default (props) => {
+const MovieBox = (props) => {
 
   return (
     <BoxContainer key={props.key}>
@@ -60,11 +61,22 @@ export default (props) => {
           .images.poster_sizes[0]}${props.movie.poster_path}`}
         alt={`${props.movie.title} poster`}
       />
-      {props.addMovieButton && 
-      <AddMovieBtn hideButton={props.hideButton} onClick={() => props.addMovie(props.movie.id)}>
-        +
+      {props.addMovieButton &&
+        <AddMovieBtn hideButton={props.hideButton} onClick={() => props.addMovie(props.movie.id)}>
+          +
       </AddMovieBtn>}
     </BoxContainer>
   )
 };
+
+export default MovieBox;
+
+MovieBox.propTypes = {
+  key: PropTypes.number.isRequired,
+  movie: PropTypes.object.isRequired,
+  hideButton: PropTypes.boolean,
+  addMovieButton: PropTypes.boolean,
+  tmdbConfiguration: PropTypes.object.isRequired,
+  addMovie: PropTypes.func
+}
 
