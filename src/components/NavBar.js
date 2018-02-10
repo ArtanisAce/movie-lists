@@ -18,6 +18,7 @@ const Title = styled.h1`
   color: white;
   margin-left: 24px;
   display: inline-block;
+  font-family: 'Raleway Thin', 'Times New Roman', serif;
 `;
 
 const ArnieLogo = styled.img`
