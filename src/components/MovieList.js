@@ -5,6 +5,8 @@ import MovieBox from "./MovieBox";
 
 export const List = styled.ul`
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
 `;
 
 const MovieList = (props) => {
@@ -13,7 +15,7 @@ const MovieList = (props) => {
     <List>
       {props.films.map((movie, i) =>
         <MovieBox
-          key={i}
+          keyIndex={i}
           movie={movie}
           hideButton={props.hideButtons && props.hideButtons[movie.id]}
           {...props.movieBoxProps} />
