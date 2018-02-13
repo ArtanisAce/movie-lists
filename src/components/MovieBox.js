@@ -17,7 +17,10 @@ export const BoxContainer = styled.li`
   /* on smaller screens, eliminate width limit*/
 `;
 
-export const MoviePoster = styled.img`display: inline-block;`;
+export const MoviePoster = styled.img`
+  display: inline-block;
+  width: 100%;
+`;
 
 const MovieHeader = styled.div`
   width: 50%;
@@ -64,7 +67,7 @@ const MovieBox = (props) => {
           {`${props.movie.title} (${props.movie.release_date.slice(0, 4)})`}
         </Title>
         <Plot>
-          {overview ? `${overview}...`: `No overview available!` }
+          {overview ? `${overview}...` : `No overview available!`}
         </Plot>
       </MovieHeader>
       <MoviePoster

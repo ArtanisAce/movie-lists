@@ -8,6 +8,16 @@ import NavBar from "./NavBar";
 import MainContent from "./MainContent";
 
 injectGlobal`
+  @font-face {
+    font-family: 'Raleway Thin';
+    src: url('/fonts/raleway_thin-webfont.eot');
+    src: url('/fonts/raleway_thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/raleway_thin-webfont.woff') format('woff'),
+         url('/fonts/raleway_thin-webfont.ttf') format('truetype'),
+         url('/fonts/raleway_thin-webfont.svg#Raleway-Thin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
   /* Apply a natural box layout model to all elements, but allowing components to change */
   html {
     box-sizing: border-box;
