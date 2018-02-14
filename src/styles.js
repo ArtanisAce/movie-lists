@@ -34,7 +34,7 @@ export const TMDBLogo = styled.img`
   float: right;
   height: 48px;
   margin-right: 16px;
-  width: 100%; /*For responsiveness*/
+  max-width: 100%; /*For responsiveness*/
 `;
 
 export const Footer = styled.footer`

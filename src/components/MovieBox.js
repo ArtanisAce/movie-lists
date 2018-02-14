@@ -19,7 +19,7 @@ export const BoxContainer = styled.li`
 
 export const MoviePoster = styled.img`
   display: inline-block;
-  width: 100%;
+  max-width: 100%;
 `;
 
 const MovieHeader = styled.div`
