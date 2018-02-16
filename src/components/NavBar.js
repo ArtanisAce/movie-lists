@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import ReactSVG from 'react-svg';
 import arnieLogo from '../svg/arnold-schwarzenegger.svg';
 
 const NavigationBar = styled.div`
@@ -21,7 +22,7 @@ const Title = styled.h1`
   font-family: 'Raleway Thin', 'Times New Roman', serif;
 `;
 
-const ArnieLogo = styled.img`
+const ArnieLogo = styled(ReactSVG)`
   height: 72px;
   align-self: flex-start;
 `;
@@ -47,7 +48,7 @@ const NavBar = (props) => {
     <NavigationBar role="navigation">
       <LogoContainer>
         <Title>Movie Lists</Title>
-        <ArnieLogo src={arnieLogo} alt="aeeeeeee" />
+        <ArnieLogo path={arnieLogo} />
       </LogoContainer>
       <LinkContainer>
         <NavLink to="/">HOME</NavLink>

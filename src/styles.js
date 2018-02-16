@@ -30,19 +30,6 @@ export const fadeIn = keyframes`
 
 export const Main = styled.div`text-align: center;`;
 
-export const TMDBLogo = styled.img`
-  float: right;
-  height: 48px;
-  margin-right: 16px;
-  max-width: 100%; /*For responsiveness*/
-`;
-
-export const Footer = styled.footer`
-  float: left;
-  font-weight: bold;
-  color: darkgray;
-`;
-
 /*
   Media Queries config in styled-components
 */

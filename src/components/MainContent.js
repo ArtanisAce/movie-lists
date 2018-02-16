@@ -1,11 +1,13 @@
 import React from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { Main } from "../styles";
+import styled from "styled-components";
 import Home from "./Home";
 import Movie from "./Movie";
 import UserList from "./UserList";
 import SearchResults from "./SearchResults";
+
+export const Main = styled.div`text-align: center;`;
 
 const MainContent = props =>
   props.error ? (

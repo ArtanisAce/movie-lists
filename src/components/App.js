@@ -3,11 +3,15 @@ import { bindActionCreators } from "redux";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getConfig } from "../actions/index";
+import styledSanitize from 'styled-sanitize'
 import { injectGlobal } from "styled-components";
 import NavBar from "./NavBar";
 import MainContent from "./MainContent";
 
 injectGlobal`
+
+  ${styledSanitize} /*Reset CSS*/
+
   @font-face {
     font-family: 'Raleway Thin';
     src: url('/fonts/raleway_thin-webfont.eot');
