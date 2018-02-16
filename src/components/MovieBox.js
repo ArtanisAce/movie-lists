@@ -7,7 +7,7 @@ import { fadeIn } from "../styles";
 export const BoxContainer = styled.li`
   margin: 32px;
   padding: 24px;
-  border: 1px solid black;
+  border: 1px solid ${props => props.theme.mainColor};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,21 +33,22 @@ const Title = styled(Link) `
 
 const AddMovieBtn = styled.button`
   display:  ${props => props.hideButton ? 'none' : 'block'};
-  width: 34px;
-  height: 34px;
-  line-height: 30px;
-  border: 2px solid #f5f5f5;
+  margin-right: 24px;
+  width: 48px;
+  height: 48px;
+  line-height: 45px;
+  border: 2px solid white;
   border-radius: 50%;
-  color: #f5f5f5;
+  color: ${props => props.theme.secondaryColor};
   text-align: center;
   text-decoration: none;
-  background: #464646;
-  box-shadow: 0 0 3px gray;
+  background: ${props => props.theme.mainColor};
+  box-shadow: 0 0 3px ${props => props.theme.boxShadowColor};
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
   &:hover {
-    background: #262626;
+    background: ${props => props.theme.hoverButtonColor};
   }
 `;
 

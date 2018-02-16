@@ -9,7 +9,7 @@ const NavigationBar = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-flow: row wrap;
-  background-color: lightblue;
+  background-color: ${props => props.theme.mainColor};
   position: static;
   padding: 16px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);

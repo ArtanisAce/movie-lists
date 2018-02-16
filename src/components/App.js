@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getConfig } from "../actions/index";
 import styledSanitize from 'styled-sanitize'
-import { injectGlobal } from "styled-components";
+import { injectGlobal, ThemeProvider } from "styled-components";
 import NavBar from "./NavBar";
 import MainContent from "./MainContent";
 
@@ -43,11 +43,22 @@ class App extends Component {
   }
 
   render() {
+
+    const theme = {
+      mainColor: "#CC0000",
+      secondaryColor: "#F5F5DC",
+      boxShadowColor: "lightgray",
+      hoverButtonColor: "#660000",
+      disabledButton: "darkgray"
+    }
+
     return (
-      <div>
-        <NavBar />
-        <MainContent />
-      </div>
+      <ThemeProvider theme={theme}>
+        <div>
+          <NavBar />
+          <MainContent />
+        </div>
+      </ThemeProvider>
     );
   }
 }
