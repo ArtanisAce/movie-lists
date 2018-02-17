@@ -32,11 +32,10 @@ const Title = styled(Link) `
 `;
 
 const AddMovieBtn = styled.button`
-  display:  ${props => props.hideButton ? 'none' : 'block'};
   margin-right: 24px;
   width: 48px;
   height: 48px;
-  line-height: 45px;
+  line-height: 46px;
   border: 2px solid white;
   border-radius: 50%;
   color: ${props => props.theme.secondaryColor};
@@ -44,7 +43,7 @@ const AddMovieBtn = styled.button`
   text-decoration: none;
   background: ${props => props.theme.mainColor};
   box-shadow: 0 0 3px ${props => props.theme.boxShadowColor};
-  font-size: 20px;
+  font-size: 27px;
   font-weight: bold;
   cursor: pointer;
   &:hover {
@@ -77,9 +76,10 @@ const MovieBox = (props) => {
         alt={`${props.movie.title} poster`}
       />
       {props.addMovieButton &&
-        <AddMovieBtn hideButton={props.hideButton} onClick={() => props.addMovie(props.movie.id)}>
-          +
-      </AddMovieBtn>}
+        (!props.hideButton ?
+          <AddMovieBtn aria-label="add-movie-button" onClick={() => props.addMovie(props.movie.id)}>
+            +
+          </AddMovieBtn> : <p>Movie added!</p>)}
     </BoxContainer>
   )
 };

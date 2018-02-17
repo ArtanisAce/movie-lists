@@ -36,7 +36,7 @@ const LinkContainer = styled.nav`
 `;
 
 const NavLink = styled(Link) `
-  color: gray;
+  color: lightgray;
   font-weight: bold;
   margin: 0 24px;
   text-align: center;

@@ -34,6 +34,7 @@ injectGlobal`
     margin: 0;
     padding: 0;
     font-family: 'Sanchez', Arial, serif;
+    transition: all ease-in-out 0.5s;
   }
 `;
 
