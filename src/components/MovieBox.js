@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Fade from "./Fade";
 import { fadeIn } from "../styles";
 
 export const BoxContainer = styled.li`
@@ -76,10 +77,11 @@ const MovieBox = (props) => {
         alt={`${props.movie.title} poster`}
       />
       {props.addMovieButton &&
-        (!props.hideButton ?
-          <AddMovieBtn aria-label="add-movie-button" onClick={() => props.addMovie(props.movie.id)}>
-            +
-          </AddMovieBtn> : <p>Movie added!</p>)}
+          <Fade duration={800} in={!props.hideButton}>
+            <AddMovieBtn aria-label="add-movie-button" onClick={() => props.addMovie(props.movie.id)}>
+              +
+            </AddMovieBtn>
+          </Fade>}
     </BoxContainer>
   )
 };

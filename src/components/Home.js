@@ -8,7 +8,6 @@ const TMDBLogo = styled(ReactSVG) `
   float: right;
   height: 48px;
   margin-right: 16px;
-  max-width: 100%; /*For responsiveness*/
 `;
 
 const Footer = styled.footer`
