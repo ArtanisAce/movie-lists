@@ -61,6 +61,11 @@ const MovieBox = (props) => {
 
   const overview = props.movie.overview.slice(0, 300);
 
+  const fadeChild = props.hideButton ? (<p key="child1">Added!</p>) :
+
+    (<AddMovieBtn key="child2" aria-label="add-movie-button" onClick={() => props.addMovie(props.movie.id)}>
+      + </AddMovieBtn>)
+
   return (
     <BoxContainer key={props.keyIndex}>
       <MovieHeader>
@@ -77,11 +82,9 @@ const MovieBox = (props) => {
         alt={`${props.movie.title} poster`}
       />
       {props.addMovieButton &&
-          <Fade duration={800} in={!props.hideButton}>
-            <AddMovieBtn aria-label="add-movie-button" onClick={() => props.addMovie(props.movie.id)}>
-              +
-            </AddMovieBtn>
-          </Fade>}
+        <Fade duration={800} in={!props.hideButton} appear={true}>
+          {fadeChild}
+        </Fade>}
     </BoxContainer>
   )
 };

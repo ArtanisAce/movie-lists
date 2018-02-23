@@ -5,12 +5,14 @@ const Fade = ({ children, duration, in: inProp }) => {
 
   const defaultStyle = {
     transition: `opacity ${duration}ms ease-in-out`,
-    opacity: 1,
+    opacity: 0,
   }
 
   const transitionStyles = {
-    exiting: { opacity: 0},
-    exited: { opacity: 0 }
+    entering: { opacity: 0 },
+    entered: { opacity: 1 },
+    exiting: { opacity: 0 },
+    exited: { opacity: 1 }
   };
 
   return (
