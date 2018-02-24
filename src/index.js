@@ -7,8 +7,14 @@ import thunk from "redux-thunk";
 import App from "./components/App";
 import reducers from "./reducers/index";
 import registerServiceWorker from "./registerServiceWorker";
+import { loadState, saveState } from "./redux-localStorage.js";
+import throttle from "lodash.throttle";
 
-const store = createStore(reducers, applyMiddleware(thunk));
+const persistedState = loadState();
+
+const store = createStore(reducers, persistedState, applyMiddleware(thunk));
+
+store.subscribe(throttle(() => { saveState(store.getState()); }));
 
 ReactDOM.render(
   <Provider store={store}>

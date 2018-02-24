@@ -3,8 +3,9 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"lodash.throttle": "^4.1.1",
 		"react": "^16.2.0",
-		"react-dom": "^16.0.0",
+		"react-dom": "^16.2.0",
 		"react-redux": "^5.0.6",
 		"react-responsive": "^4.0.3",
 		"react-router-dom": "^4.2.2",

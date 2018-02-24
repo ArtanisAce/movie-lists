@@ -57,14 +57,20 @@ const Plot = styled.p`
   font-size: 12px;
 `;
 
+const AddedText = styled.p`
+  margin-right: 20px;
+`;
+
 const MovieBox = (props) => {
 
   const overview = props.movie.overview.slice(0, 300);
 
-  const fadeChild = props.hideButton ? (<p key="child1">Added!</p>) :
-
+  const fadeChild = props.hideButton ?
+    (<AddedText key="child1">Added!</AddedText>)
+    :
     (<AddMovieBtn key="child2" aria-label="add-movie-button" onClick={() => props.addMovie(props.movie.id)}>
-      + </AddMovieBtn>)
+      +
+    </AddMovieBtn>)
 
   return (
     <BoxContainer key={props.keyIndex}>
