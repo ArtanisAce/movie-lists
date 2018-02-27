@@ -41,7 +41,7 @@ const NavLink = styled(Link) `
   margin: 0 24px;
   text-align: center;
   text-decoration: none;
-`
+`;
 
 const NavBar = (props) => {
   return (

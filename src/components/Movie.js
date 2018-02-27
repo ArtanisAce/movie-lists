@@ -13,5 +13,3 @@ export default (props) => {
     </div>
   );
 }
-
-//TODO: Conectar al state de searchResults para no hacer mas http requests?? 

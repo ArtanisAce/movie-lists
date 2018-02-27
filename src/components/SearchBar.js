@@ -86,7 +86,7 @@ class SearchBar extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
   return bindActionCreators({ searchFilm }, dispatch);
 }
 

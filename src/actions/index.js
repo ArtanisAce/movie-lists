@@ -1,7 +1,7 @@
 import { apiKey } from "../constants";
 import { tmdbGet } from "../APIUtils";
 
-export function searchFilm(film) {
+export const searchFilm = film => {
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${film}`;
 
   // Thunk middleware knows how to handle functions.
@@ -12,7 +12,7 @@ export function searchFilm(film) {
   };
 }
 
-export function getConfig() {
+export const getConfig = () => {
   const url = `https://api.themoviedb.org/3/configuration?api_key=${apiKey}`;
 
   return dispatch => {
@@ -20,7 +20,7 @@ export function getConfig() {
   };
 }
 
-export function addFilm(film) {
+export const addFilm = film => {
   return {
     type: "ADD_FILM",
     film

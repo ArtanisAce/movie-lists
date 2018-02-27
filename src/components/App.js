@@ -39,6 +39,7 @@ injectGlobal`
 `;
 
 class App extends Component {
+
   componentWillMount() {
     this.props.getConfig();
   }
@@ -64,7 +65,7 @@ class App extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
   return bindActionCreators({ getConfig }, dispatch);
 }
 

@@ -23,15 +23,8 @@ const MainContent = props =>
       </Main>
     );
 
-const mapStateToProps = state => {
-  if (state.error) {
-    // GITANADA, solo es un workaround :)
-    console.error(state.error);
-  }
-
-  return {
-    error: state.error
-  };
-};
+const mapStateToProps = state => ({
+  error: state.error
+});
 
 export default withRouter(connect(mapStateToProps, null)(MainContent));

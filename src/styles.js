@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from "styled-components";
+import { keyframes, css } from "styled-components";
 
 /*
   Animations
@@ -33,12 +33,6 @@ export const fadeIn = keyframes`
 //     opacity: 0;
 //   }
 // `;
-
-/*
- Home page
-*/
-
-export const Main = styled.div`text-align: center;`;
 
 /*
   Media Queries config in styled-components
