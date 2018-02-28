@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { addFilm } from "../actions/index";
 import MovieList from "./MovieList";
@@ -51,8 +50,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ addFilm }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);
+// Passing an object full of actions will automatically run each action 
+// through the bindActionCreators utility, and turn them into props
+//http://blog.isquaredsoftware.com/2016/10/idiomatic-redux-why-use-action-creators/
+export default connect(mapStateToProps, { addFilm })(SearchResults);

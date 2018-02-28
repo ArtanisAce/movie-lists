@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { bindActionCreators } from "redux";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getConfig } from "../actions/index";
@@ -65,8 +64,4 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ getConfig }, dispatch);
-}
-
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(null, { getConfig })(App));
