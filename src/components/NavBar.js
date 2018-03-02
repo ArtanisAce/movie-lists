@@ -41,13 +41,20 @@ const NavLink = styled(Link) `
   margin: 0 24px;
   text-align: center;
   text-decoration: none;
+  transition: border-bottom ease-in-out 0.25s;
+  &:focus {
+    color: orangered;
+  }
+  &:hover {
+    border-bottom: 1px solid orangered;
+  }
 `;
 
 const NavBar = (props) => {
   return (
     <NavigationBar role="navigation">
       <LogoContainer>
-        <Title>Movie Lists</Title>
+        <Title role="banner">Movie Lists</Title>
         <ArnieLogo path={arnieLogo} />
       </LogoContainer>
       <LinkContainer>

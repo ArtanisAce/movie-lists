@@ -69,7 +69,7 @@ class SearchBar extends Component {
     }
 
     return (
-      <form onSubmit={this.searchKeyword}>
+      <form role="search" onSubmit={this.searchKeyword}>
         <SearchForm>
           <SearchInput
             type="search"

@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <div>
       <SearchBar />
-      <BottomPageContainer>
+      <BottomPageContainer role="contentinfo">
         <Footer>Created by Pedro Pablo Miron Pozo</Footer>
         <TMDBLogo path={tmdbLogo} />
         <div>Icons made by

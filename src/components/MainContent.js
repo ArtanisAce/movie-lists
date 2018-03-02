@@ -7,13 +7,19 @@ import Movie from "./Movie";
 import UserList from "./UserList";
 import SearchResults from "./SearchResults";
 
-export const Main = styled.div`text-align: center;`;
+export const Main = styled.main`text-align: center;`;
 
-const MainContent = props =>
-  props.error ? (
-    <div>Oops, something went wrong :(</div>
-  ) : (
-      <Main>
+const MainContent = ({error}) => {
+
+  if (error) {
+    console.error(error);
+  }
+
+  return (
+    error ?
+      <div>Oops, something went wrong :(</div>
+      :
+      <Main role="main">
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/search" component={SearchResults} />
@@ -21,7 +27,9 @@ const MainContent = props =>
           <Route path="/movie-list" component={UserList} />
         </Switch>
       </Main>
-    );
+  )
+};
+
 
 const mapStateToProps = state => ({
   error: state.error
