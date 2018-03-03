@@ -38,6 +38,7 @@ const LinkContainer = styled.nav`
 const NavLink = styled(Link) `
   color: lightgray;
   font-weight: bold;
+  font-size: 19px; /* To ensure enough contrast */
   margin: 0 24px;
   text-align: center;
   text-decoration: none;

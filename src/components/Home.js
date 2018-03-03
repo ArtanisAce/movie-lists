@@ -13,7 +13,6 @@ const TMDBLogo = styled(ReactSVG) `
 const Footer = styled.footer`
   float: left;
   font-weight: bold;
-  color: darkgray;
 `;
 
 const BottomPageContainer = styled.div`
@@ -22,6 +21,7 @@ const BottomPageContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: black;
 `;
 
 const Home = () => {
