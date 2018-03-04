@@ -61,7 +61,7 @@ const NavBar = (props) => {
       <LinkContainer>
         <NavLink to="/">HOME</NavLink>
         <NavLink to="/movie-list">MOVIE LIST</NavLink>
-        <NavLink to="/login">LOGIN</NavLink>
+        <NavLink to="/create-user">SIGNUP</NavLink>
         <NavLink to="/logout">LOGOUT</NavLink>
       </LinkContainer>
     </NavigationBar>

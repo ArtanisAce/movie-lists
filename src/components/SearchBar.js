@@ -19,7 +19,6 @@ const SearchForm = styled.div`
    6px 6px 0 ${props => props.theme.boxShadowColor},
    7px 7px 0 ${props => props.theme.boxShadowColor}
   ;
-
   input, button {
     font-family: 'Sanchez', Arial, serif;
   }

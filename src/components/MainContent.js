@@ -6,6 +6,7 @@ import Home from "./Home";
 import Movie from "./Movie";
 import UserList from "./UserList";
 import SearchResults from "./SearchResults";
+import UserForm from "./UserForm";
 
 export const Main = styled.main`text-align: center;`;
 
@@ -25,6 +26,7 @@ const MainContent = ({error}) => {
           <Route path="/search" component={SearchResults} />
           <Route path="/movie/:id" component={Movie} />
           <Route path="/movie-list" component={UserList} />
+          <Route path="/create-user" component={UserForm} />
         </Switch>
       </Main>
   )
