@@ -1,6 +1,6 @@
-import React from "react";
-// import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+// import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { withFormik } from 'formik';
 import { movieGenres } from '../constants';
 
@@ -39,48 +39,38 @@ const InnerForm = ({
   isSubmitting,
 }) => (
     <CreateUserForm onSubmit={handleSubmit}>
-      <label htmlFor="email">Email</label>
+      <label htmlFor='email'>Email</label>
       <FormInput
-        type="email"
-        name="email"
+        type='email'
+        name='email'
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.email}
       />
       {touched.email && errors.email && <Error>{errors.email}</Error>}
-      <label htmlFor="password">Password</label>
+      <label htmlFor='password'>Password</label>
       <FormInput
-        type="password"
-        name="password"
+        type='password'
+        name='password'
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.password}
       />
       {touched.password && errors.password && <Error>{errors.password}</Error>}
-      <button type="submit" disabled={isSubmitting}>
+      <button type='submit' disabled={isSubmitting}>
         Submit
       </button>
-      {/* <label htmlFor="genre">Choose your favourite genre</label> */}
       <GenreDropdown
-        name="genre"
+        name='genre'
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.genre}>
-        <option value="default" disabled>Choose your favourite genre...</option>
+        <option value='default' disabled>Choose your favourite genre...</option>
         {movieGenres.map(
           (genre, index) => (
             <Genre key={index} value={genre}>{genre}</Genre>
           )
         )}
-        {/* 
-        <option value="western">Western</option>
-        <option value="drama">Drama</option>
-        <option value="horror">Horror</option>
-        <option value="fantasy">Fantasy</option>
-        <option value="science-fiction">Science-Fiction</option>
-        <option value="action">Action</option>
-        <option value="adventure">Adventure</option>
-        <option value="war">War</option> */}
       </GenreDropdown>
       {touched.genre && errors.genre && <Error>{errors.genre}</Error>}
     </CreateUserForm>

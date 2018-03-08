@@ -1,6 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
-import MovieList from "./MovieList";
+import React from 'react';
+import { connect } from 'react-redux';
+import MovieList from './MovieList';
+import { selectMovieList, selectTmdbConfig } from '../reducers';
 
 // TODO: Pasar el config a una accion en react router al hacer login, guardar en localstorage quizas?
 
@@ -29,8 +30,8 @@ const UserList = props => {
 
 const mapStateToProps = state => {
   return {
-    filmsList: state.filmsList,
-    config: state.config
+    filmsList: selectMovieList(state.filmsList),
+    config: selectTmdbConfig(state.config)
   };
 };
 

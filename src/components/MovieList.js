@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import MovieBox from "./MovieBox";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import MovieBox from './MovieBox';
 
 export const List = styled.ul`
   list-style-type: none;

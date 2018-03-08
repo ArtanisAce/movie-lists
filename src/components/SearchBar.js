@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import styled from "styled-components";
-import { searchFilm } from "../actions/index";
-import { Redirect } from "react-router-dom";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import { searchFilm } from '../actions/index';
+import { Redirect } from 'react-router-dom';
 
 const SearchForm = styled.div`
   display: flex;
@@ -36,7 +36,7 @@ const SearchButton = styled.button`
     props.theme.disabledButton : props.theme.mainColor};
   color: white;
   border: none;
-  cursor: ${props => props.disabled ? "not-allowed" : "pointer"};
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   &:hover {
     background: ${props =>
     props.disabled ? props.theme.disabledButton : props.theme.hoverButtonColor};
@@ -47,7 +47,7 @@ const SearchButton = styled.button`
 class SearchBar extends Component {
   constructor() {
     super();
-    this.state = { keyWord: "", search: false };
+    this.state = { keyWord: '', search: false };
     this.onInputChange = this.onInputChange.bind(this);
     this.searchKeyword = this.searchKeyword.bind(this);
   }
@@ -64,18 +64,18 @@ class SearchBar extends Component {
 
   render() {
     if (this.state.search) {
-      return <Redirect to="/search" />;
+      return <Redirect to='/search' />;
     }
 
     return (
-      <form role="search" onSubmit={this.searchKeyword}>
+      <form role='search' onSubmit={this.searchKeyword}>
         <SearchForm>
           <SearchInput
-            type="search"
-            placeholder="Search for a movie..."
+            type='search'
+            placeholder='Search for a movie...'
             onChange={this.onInputChange}
             value={this.state.keyWord} />
-          <SearchButton type="submit" disabled={!this.state.keyWord}>
+          <SearchButton type='submit' disabled={!this.state.keyWord}>
             Find!
           </SearchButton>
         </SearchForm>

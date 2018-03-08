@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import ReactSVG from 'react-svg';
 import arnieLogo from '../svg/arnold-schwarzenegger.svg';
 
@@ -53,16 +53,16 @@ const NavLink = styled(Link) `
 
 const NavBar = (props) => {
   return (
-    <NavigationBar role="navigation">
+    <NavigationBar role='navigation'>
       <LogoContainer>
-        <Title role="banner">Movie Lists</Title>
+        <Title role='banner'>Movie Lists</Title>
         <ArnieLogo path={arnieLogo} />
       </LogoContainer>
       <LinkContainer>
-        <NavLink to="/">HOME</NavLink>
-        <NavLink to="/movie-list">MOVIE LIST</NavLink>
-        <NavLink to="/create-user">SIGNUP</NavLink>
-        <NavLink to="/logout">LOGOUT</NavLink>
+        <NavLink to='/'>HOME</NavLink>
+        <NavLink to='/movie-list'>MOVIE LIST</NavLink>
+        <NavLink to='/create-user'>SIGNUP</NavLink>
+        <NavLink to='/logout'>LOGOUT</NavLink>
       </LinkContainer>
     </NavigationBar>
   );

@@ -3,7 +3,7 @@ export const tmdbGet = async (dispatch, url, onSuccessType) => {
     dispatch({ type: onSuccessType, response });
   }
   function onError(error) {
-    dispatch({ type: "ERROR", error });
+    dispatch({ type: 'ERROR', error });
   }
 
   try {

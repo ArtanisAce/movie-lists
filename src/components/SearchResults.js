@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { addFilm } from "../actions/index";
-import MovieList from "./MovieList";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addFilm } from '../actions/index';
+import { selectMovieList, selectTmdbConfig } from '../reducers/index';
+import MovieList from './MovieList';
 
 class SearchResults extends Component {
 
@@ -45,8 +46,8 @@ class SearchResults extends Component {
 
 const mapStateToProps = state => {
   return {
-    filmsResult: state.filmsResult,
-    config: state.config
+    filmsResult: selectMovieList(state.filmsResult),
+    config: selectTmdbConfig(state.config)
   };
 };
 

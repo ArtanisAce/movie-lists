@@ -1,9 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import Fade from "./Fade";
-import { fadeIn } from "../styles";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import ReactSVG from 'react-svg';
+import Fade from './Fade';
+import { fadeIn } from '../styles';
+import filmLogo from '../svg/film.svg';
 
 export const BoxContainer = styled.li`
   margin: 32px;
@@ -61,34 +63,55 @@ const AddedText = styled.p`
   margin-right: 20px;
 `;
 
+const NoPosterFilm = styled(ReactSVG) `
+  width: 92px;
+`;
+
 const MovieBox = (props) => {
 
-  const overview = props.movie.overview.slice(0, 300);
+  const {
+    movie,
+    hideButton,
+    addMovie,
+    addMovieButton,
+    keyIndex,
+    tmdbConfiguration
+  } = props;
 
-  const fadeChild = props.hideButton ?
-    (<AddedText key="child1">Added!</AddedText>)
+  const {
+    id,
+    title,
+    releaseDate,
+    overview,
+    posterPath
+  } = movie;
+
+  const fadeChild = hideButton ?
+    (<AddedText key='child1'>Added!</AddedText>)
     :
-    (<AddMovieBtn key="child2" aria-label="add-movie-button" onClick={() => props.addMovie(props.movie.id)}>
+    (<AddMovieBtn key='child2' aria-label='add-movie-button' onClick={() => addMovie(id)}>
       +
     </AddMovieBtn>)
 
   return (
-    <BoxContainer key={props.keyIndex}>
+    <BoxContainer key={keyIndex}>
       <MovieHeader>
-        <Title to={`/movie/${props.movie.id}`}>
-          {`${props.movie.title} (${props.movie.release_date.slice(0, 4)})`}
+        <Title to={`/movie/${id}`}>
+          {`${title} (${releaseDate ? releaseDate : 'Unknown'})`}
         </Title>
         <Plot>
           {overview ? `${overview}...` : `No overview available!`}
         </Plot>
       </MovieHeader>
-      <MoviePoster
-        src={`${props.tmdbConfiguration.images.base_url}/${props.tmdbConfiguration
-          .images.poster_sizes[0]}${props.movie.poster_path}`}
-        alt={`${props.movie.title} poster`}
-      />
-      {props.addMovieButton &&
-        <Fade duration={800} in={!props.hideButton} appear={true}>
+      {posterPath ?
+        <MoviePoster
+          src={`${tmdbConfiguration.imagesUrl}/${tmdbConfiguration.posterSizes}${posterPath}`}
+          alt={`${title} poster`} />
+        :
+        <NoPosterFilm path={filmLogo}/>
+      }
+      {addMovieButton &&
+        <Fade duration={800} in={!hideButton} appear={true}>
           {fadeChild}
         </Fade>}
     </BoxContainer>

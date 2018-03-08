@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { getConfig } from "../actions/index";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getConfig } from '../actions/index';
 import styledSanitize from 'styled-sanitize'
-import { injectGlobal, ThemeProvider } from "styled-components";
-import NavBar from "./NavBar";
-import MainContent from "./MainContent";
+import { injectGlobal, ThemeProvider } from 'styled-components';
+import NavBar from './NavBar';
+import MainContent from './MainContent';
 
 injectGlobal`
 
@@ -46,11 +46,11 @@ class App extends Component {
   render() {
 
     const theme = {
-      mainColor: "#CC0000",
-      secondaryColor: "#F5F5DC",
-      boxShadowColor: "lightgray",
-      hoverButtonColor: "#660000",
-      disabledButton: "darkgray"
+      mainColor: '#CC0000',
+      secondaryColor: '#F5F5DC',
+      boxShadowColor: 'lightgray',
+      hoverButtonColor: '#660000',
+      disabledButton: 'darkgray'
     }
 
     return (
