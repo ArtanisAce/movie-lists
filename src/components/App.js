@@ -29,6 +29,10 @@ injectGlobal`
     box-sizing: inherit;
   }
 
+  main {
+    text-align: center;
+  }
+
   body {
     margin: 0;
     padding: 0;

@@ -1,9 +1,11 @@
+import { actionTypes } from './constants';
+
 export const tmdbGet = async (dispatch, url, onSuccessType) => {
   function onSuccess(response) {
     dispatch({ type: onSuccessType, response });
   }
   function onError(error) {
-    dispatch({ type: 'ERROR', error });
+    dispatch({ type: actionTypes.FETCH_ERROR, error });
   }
 
   try {

@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 import filmReducer from './reducer_search';
 import filmsListReducer from './reducer_filmsList';
 import getConfig from './reducer_config';
+import errorReducer from './reducer_error';
 
 const rootReducer = combineReducers({
   filmsResult: filmReducer,
   filmsList: filmsListReducer,
-  config: getConfig
+  config: getConfig,
+  errorMessage: errorReducer
 });
 
 /* Selectors */

@@ -47,19 +47,19 @@ const SearchButton = styled.button`
 class SearchBar extends Component {
   constructor() {
     super();
-    this.state = { keyWord: '', search: false };
+    this.state = { movieToSearch: '', search: false };
     this.onInputChange = this.onInputChange.bind(this);
-    this.searchKeyword = this.searchKeyword.bind(this);
+    this.searchMovie = this.searchMovie.bind(this);
   }
 
   onInputChange(e) {
-    this.setState({ keyWord: e.target.value });
+    this.setState({ movieToSearch: e.target.value });
   }
 
-  searchKeyword(e) {
+  searchMovie(e) {
     e.preventDefault();
     this.setState({ search: true });
-    this.props.searchFilm(this.state.keyWord);
+    this.props.searchFilm(this.state.movieToSearch);
   }
 
   render() {
@@ -68,14 +68,14 @@ class SearchBar extends Component {
     }
 
     return (
-      <form role='search' onSubmit={this.searchKeyword}>
+      <form role='search' onSubmit={this.searchMovie}>
         <SearchForm>
           <SearchInput
             type='search'
             placeholder='Search for a movie...'
             onChange={this.onInputChange}
-            value={this.state.keyWord} />
-          <SearchButton type='submit' disabled={!this.state.keyWord}>
+            value={this.state.movieToSearch} />
+          <SearchButton type='submit' disabled={!this.state.movieToSearch}>
             Find!
           </SearchButton>
         </SearchForm>
