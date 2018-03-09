@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addFilm } from '../actions/index';
-import { selectMovieList, selectTmdbConfig } from '../reducers/index';
+import { selectFilmsResult, selectTmdbConfig } from '../reducers/index';
 import MovieList from './MovieList';
 
 class SearchResults extends Component {
@@ -44,12 +44,10 @@ class SearchResults extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    filmsResult: selectMovieList(state.filmsResult),
-    config: selectTmdbConfig(state.config)
-  };
-};
+const mapStateToProps = state => ({
+  filmsResult: selectFilmsResult(state),
+  config: selectTmdbConfig(state.config)
+});
 
 // Passing an object full of actions will automatically run each action 
 // through the bindActionCreators utility, and turn them into props

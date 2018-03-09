@@ -121,7 +121,8 @@ const MovieBox = (props) => {
 export default MovieBox;
 
 MovieBox.defaultProps = {
-  hideButton: false
+  hideButton: false,
+  addMovieButton: false
 }
 
 MovieBox.propTypes = {
