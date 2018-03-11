@@ -36,17 +36,21 @@ class SearchResults extends Component {
     }
 
     return (
-      <MovieList
-        films={this.props.filmsResult}
-        movieBoxProps={movieBoxProps}
-        hideButtons={this.state.hideButtons} />
+      this.props.error ?
+        <div>Oops, something went wrong :(</div>
+        :
+        <MovieList
+          films={this.props.filmsResult}
+          movieBoxProps={movieBoxProps}
+          hideButtons={this.state.hideButtons} />
     );
   }
 }
 
 const mapStateToProps = state => ({
   filmsResult: selectFilmsResult(state),
-  config: selectTmdbConfig(state.config)
+  config: selectTmdbConfig(state.config),
+  error: state.error
 });
 
 // Passing an object full of actions will automatically run each action 

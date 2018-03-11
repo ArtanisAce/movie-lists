@@ -11,7 +11,11 @@ export const tmdbGet = async (dispatch, url, onSuccessType) => {
   try {
     let tmdbRequest = await fetch(url);
     let response = await tmdbRequest.json();
-    onSuccess(response);
+    if (tmdbRequest.ok) {  
+      onSuccess(response);
+    } else {
+      onError(response.status_message);
+    }
   } catch (error) {
     onError(error);
   }

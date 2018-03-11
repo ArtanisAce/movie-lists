@@ -21,6 +21,9 @@ const UserList = props => {
   }
 
   return (
+    this.props.error ?
+    <div>Oops, something went wrong :(</div>
+    :
     <MovieList
       films={props.filmsList}
       movieBoxProps={movieBoxProps}
@@ -30,7 +33,8 @@ const UserList = props => {
 
 const mapStateToProps = state => ({
   filmsList: state.filmsList,
-  config: selectTmdbConfig(state.config)
+  config: selectTmdbConfig(state.config),
+  error: state.error
 });
 
 export default connect(mapStateToProps, null)(UserList);

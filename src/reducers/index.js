@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   filmsResult: filmReducer,
   filmsList: filmsListReducer,
   config: getConfig,
-  errorMessage: errorReducer
+  error: errorReducer
 });
 
 /* Selectors */
