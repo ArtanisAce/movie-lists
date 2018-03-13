@@ -75,7 +75,7 @@ const MovieBox = (props) => {
     addMovie,
     addMovieButton,
     keyIndex,
-    tmdbConfiguration
+    config
   } = props;
 
   const {
@@ -105,7 +105,7 @@ const MovieBox = (props) => {
       </MovieHeader>
       {posterPath ?
         <MoviePoster
-          src={`${tmdbConfiguration.imagesUrl}/${tmdbConfiguration.posterSizes}${posterPath}`}
+          src={`${config.imagesUrl}/${config.posterSizes}${posterPath}`}
           alt={`${title} poster`} />
         :
         <NoPosterFilm path={filmLogo}/>
@@ -130,7 +130,7 @@ MovieBox.propTypes = {
   movie: PropTypes.object.isRequired,
   hideButton: PropTypes.boolean,
   addMovieButton: PropTypes.boolean,
-  tmdbConfiguration: PropTypes.object.isRequired,
+  config: PropTypes.object.isRequired,
   addMovie: PropTypes.func
 }
 

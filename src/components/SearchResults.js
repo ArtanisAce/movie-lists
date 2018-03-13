@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addFilm } from '../actions/index';
-import { selectFilmsResult, selectTmdbConfig } from '../reducers/index';
+import { selectSearchResults, selectTmdbConfig, selectIsFetching } from '../reducers/index';
 import MovieList from './MovieList';
 
 class SearchResults extends Component {
@@ -13,44 +13,42 @@ class SearchResults extends Component {
   }
 
   addMovie(movieId) {
-    const film = this.props.filmsResult.find(movie => movie.id === movieId);
+    const film = this.props.searchResult.find(movie => movie.id === movieId);
     this.props.addFilm(film);
     this.setState({ hideButtons: Object.assign(this.state.hideButtons, { [movieId]: true }) });
   }
 
   render() {
-    const tmdbConfiguration = this.props.config;
+    const { searchResult, config, error, isFetching } = this.props
 
-    if (Object.keys(tmdbConfiguration).length === 0) {
-      return <div> An error ocurred :( </div>;
+    if (isFetching && !searchResult.length) {
+      return <div> Loading... </div>
     }
 
-    if (!this.props.filmsResult.length) {
-      return <div> Loading... </div>
+    if (error) {
+      return <div>Oops, something went wrong :(</div>
     }
 
     const movieBoxProps = {
       addMovieButton: true,
-      tmdbConfiguration: tmdbConfiguration,
+      config: config,
       addMovie: this.addMovie,
     }
 
     return (
-      this.props.error ?
-        <div>Oops, something went wrong :(</div>
-        :
-        <MovieList
-          films={this.props.filmsResult}
-          movieBoxProps={movieBoxProps}
-          hideButtons={this.state.hideButtons} />
+      <MovieList
+        films={searchResult}
+        movieBoxProps={movieBoxProps}
+        hideButtons={this.state.hideButtons} />
     );
   }
 }
 
 const mapStateToProps = state => ({
-  filmsResult: selectFilmsResult(state),
-  config: selectTmdbConfig(state.config),
-  error: state.error
+  searchResult: selectSearchResults(state),
+  config: selectTmdbConfig(state),
+  error: state.error,
+  isFetching: selectIsFetching(state)
 });
 
 // Passing an object full of actions will automatically run each action 

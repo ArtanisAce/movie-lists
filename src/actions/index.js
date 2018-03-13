@@ -2,10 +2,11 @@ import { apiKey, actionTypes } from '../constants';
 import { tmdbGet } from '../APIUtils';
 
 export const searchFilm = film => {
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=2323243&query=${film}`;
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${film}`;
 
   return dispatch => {
-    tmdbGet(dispatch, url, actionTypes.SEARCH_FILM);
+    dispatch({type: actionTypes.SEARCH_FILM});
+    tmdbGet(dispatch, url, actionTypes.SEARCH_RESULTS);
   };
 }
 

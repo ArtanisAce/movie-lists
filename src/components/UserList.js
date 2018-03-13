@@ -3,29 +3,24 @@ import { connect } from 'react-redux';
 import MovieList from './MovieList';
 import { selectTmdbConfig } from '../reducers';
 
-// TODO: Pasar el config a una accion en react router al hacer login, guardar en localstorage quizas?
-
 const UserList = props => {
-  const tmdbConfiguration = props.config;
 
-  if (!props.filmsList.length) {
+  const { filmsList, config, error } = props;
+
+  if (!filmsList.length) {
     return <div> No movies added! :( </div>;
   }
 
-  if (Object.keys(tmdbConfiguration).length === 0) {
-    return <div> An error ocurred! :(</div>
-  }
-
   const movieBoxProps = {
-    tmdbConfiguration: tmdbConfiguration
+    config
   }
 
   return (
-    this.props.error ?
+    error ?
     <div>Oops, something went wrong :(</div>
     :
     <MovieList
-      films={props.filmsList}
+      films={filmsList}
       movieBoxProps={movieBoxProps}
     />
   );
@@ -33,7 +28,7 @@ const UserList = props => {
 
 const mapStateToProps = state => ({
   filmsList: state.filmsList,
-  config: selectTmdbConfig(state.config),
+  config: selectTmdbConfig(state),
   error: state.error
 });
 

@@ -43,7 +43,7 @@ injectGlobal`
 
 class App extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getConfig();
   }
 
