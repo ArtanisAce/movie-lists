@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { addFilm } from '../actions/index';
-import { selectSearchResults, selectTmdbConfig, selectIsFetching } from '../reducers/index';
+import { 
+  getSearchResults, 
+  getTmdbConfig, 
+  getIsFetching,
+  getSearchError,
+  getConfigError
+ } from '../reducers/index';
 import MovieList from './MovieList';
 
 class SearchResults extends Component {
 
   constructor() {
     super();
-    this.state = { hideButtons: {} };
+    this.state = { hideButtons: {}, errorCounter: 4 };
     this.addMovie = this.addMovie.bind(this);
+    this.decreaseCounter = this.decreaseCounter.bind(this);
   }
 
   addMovie(movieId) {
@@ -18,15 +26,45 @@ class SearchResults extends Component {
     this.setState({ hideButtons: Object.assign(this.state.hideButtons, { [movieId]: true }) });
   }
 
+  decreaseCounter() {
+    if (this.state.errorCounter > 0) {
+      this.setState({errorCounter: this.state.errorCounter - 1});
+    }
+  }
+
   render() {
-    const { searchResult, config, error, isFetching } = this.props
+    const { 
+      searchResult, 
+      config, 
+      searchError, 
+      configError, 
+      isFetching } = this.props
 
     if (isFetching && !searchResult.length) {
-      return <div> Loading... </div>
+      return <div>Loading...</div>
     }
 
-    if (error) {
-      return <div>Oops, something went wrong :(</div>
+    if (!searchResult.length) {
+      return <div>Couldn't find any film that matches the search...</div>
+    }
+
+    if (configError) {
+      console.error(configError);
+      return <div>There was a network issue. Please, reload the application</div>
+    }
+
+    if (searchError) {
+      const counter = this.state.errorCounter;
+      console.error(searchError);
+      this.decreaseCounter();
+      return
+      (
+        <div>
+          <div>Oops, something went wrong with the search! Redirecting to home page...</div>
+          <div>{counter}</div>
+          !counter ? <Redirect to='/' /> : null
+        </div>
+      )
     }
 
     const movieBoxProps = {
@@ -45,10 +83,11 @@ class SearchResults extends Component {
 }
 
 const mapStateToProps = state => ({
-  searchResult: selectSearchResults(state),
-  config: selectTmdbConfig(state),
-  error: state.error,
-  isFetching: selectIsFetching(state)
+  searchResult: getSearchResults(state),
+  config: getTmdbConfig(state),
+  searchError: getSearchError(state),
+  configError: getConfigError(state),
+  isFetching: getIsFetching(state)
 });
 
 // Passing an object full of actions will automatically run each action 

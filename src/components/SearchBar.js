@@ -64,7 +64,7 @@ class SearchBar extends Component {
 
   render() {
     if (this.state.search) {
-      return <Redirect to='/search' />;
+      return <Redirect to='/search-results' />;
     }
 
     return (

@@ -5,7 +5,8 @@ export const actionTypes = {
   SEARCH_RESULTS: 'SEARCH_RESULTS',
   GET_CONFIG: 'GET_CONFIG',
   ADD_FILM: 'ADD_FILM',
-  FETCH_ERROR: 'FETCH_ERROR'
+  SEARCH_ERROR: 'SEARCH_ERROR',
+  CONFIG_ERROR: 'CONFIG_ERROR'
 }
 
 export const movieGenres = [

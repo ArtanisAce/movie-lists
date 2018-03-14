@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import filmSearchReducer, * as getResults from './reducer_search';
-import filmsListReducer from './reducer_filmsList';
-import configReducer, * as getConfig from './reducer_config';
-import errorReducer from './reducer_error';
+import filmSearchReducer, * as fromSearch from './search-film';
+import filmsListReducer, * as fromFilmsList from './films-list';
+import configReducer, * as fromConfig from './config';
+import errorReducer, * as fromError from './error';
 
 const rootReducer = combineReducers({
   filmSearch: filmSearchReducer,
@@ -15,14 +15,20 @@ export default rootReducer;
 
 /* Selectors */
 
-export const selectSearchResults = state =>
-  getResults.selectSearchResults(state.filmSearch);
+export const getSearchResults = state =>
+  fromSearch.getSearchResults(state.filmSearch);
 
-export const selectIsFetching = state => 
-  getResults.selectIsFetching(state.filmSearch);
+export const getIsFetching = state =>
+  fromSearch.getIsFetching(state.filmSearch);
 
-export const getError = state => 
-  state.error;
+export const getFilmsList = state =>
+  fromFilmsList.getFilmsList(state);
 
-export const selectTmdbConfig = state =>
-  getConfig.selectTmdbConfig(state.config);
+export const getSearchError = state =>
+  fromError.getSearchError(state.error);
+
+export const getConfigError = state =>
+  fromError.getConfigError(state.error);
+
+export const getTmdbConfig = state =>
+  fromConfig.getTmdbConfig(state.config);

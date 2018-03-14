@@ -25,7 +25,7 @@ export default combineReducers({
   isFetching
 });
 
-export const selectSearchResults = state => {
+export const getSearchResults = state => {
 
   return state.results ? state.results.map(movie => {
     return {
@@ -38,5 +38,5 @@ export const selectSearchResults = state => {
   }) : [];
 }
 
-export const selectIsFetching = state => state.isFetching;
+export const getIsFetching = state => state.isFetching;
 

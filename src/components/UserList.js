@@ -1,14 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MovieList from './MovieList';
-import { selectTmdbConfig } from '../reducers';
+import { 
+  getFilmsList, 
+  getTmdbConfig, 
+  getConfigError
+ } from '../reducers/index';
 
 const UserList = props => {
 
-  const { filmsList, config, error } = props;
+  const { filmsList, config, configError } = props;
 
   if (!filmsList.length) {
-    return <div> No movies added! :( </div>;
+    return <div>No movies added! :(</div>;
+  }
+
+  if (configError) {
+    console.error(configError);
+    return <div>There was a network issue. Please, reload the application</div>
   }
 
   const movieBoxProps = {
@@ -16,9 +25,6 @@ const UserList = props => {
   }
 
   return (
-    error ?
-    <div>Oops, something went wrong :(</div>
-    :
     <MovieList
       films={filmsList}
       movieBoxProps={movieBoxProps}
@@ -27,9 +33,9 @@ const UserList = props => {
 };
 
 const mapStateToProps = state => ({
-  filmsList: state.filmsList,
-  config: selectTmdbConfig(state),
-  error: state.error
+  filmsList: getFilmsList(state),
+  config: getTmdbConfig(state),
+  configError: getConfigError(state)
 });
 
 export default connect(mapStateToProps, null)(UserList);

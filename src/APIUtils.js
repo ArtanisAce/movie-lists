@@ -7,6 +7,8 @@ export const tmdbGet = async (dispatch, url, onSuccessType) => {
   if (tmdbRequest.ok) {
     dispatch({ type: onSuccessType, response });
   } else {
-    dispatch({ type: actionTypes.FETCH_ERROR, error: response.status_message });
+    const errorType = onSuccessType === actionTypes.SEARCH_RESULTS ? 
+    actionTypes.SEARCH_ERROR : actionTypes.CONFIG_ERROR;
+    dispatch({ type: errorType, error: response.status_message });
   }
 }

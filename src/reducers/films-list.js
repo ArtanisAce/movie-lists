@@ -6,3 +6,5 @@ export default (state = [], action) => {
       return state;
   }
 };
+
+export const getFilmsList = (state) => state.filmsList;

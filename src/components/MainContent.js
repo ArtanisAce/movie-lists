@@ -12,7 +12,7 @@ const MainContent = () => {
     <main role='main'>
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route path='/search' component={SearchResults} />
+        <Route path='/search-results' component={SearchResults} />
         <Route path='/movie/:id' component={Movie} />
         <Route path='/movie-list' component={UserList} />
         <Route path='/create-user' component={UserForm} />
