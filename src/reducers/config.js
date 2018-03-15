@@ -10,8 +10,12 @@ const configReducer = (state = {}, action) => {
 export default configReducer;
 
 export const getTmdbConfig = state => {
-  return {
-    imagesUrl: state.images.base_url,
-    posterSizes: state.images.poster_sizes[0]
+  if (Object.keys(state).length) {
+    return {
+      imagesUrl: state.images.base_url,
+      posterSizes: state.images.poster_sizes[0]
+    }
+  } else {
+    return {};
   }
 };

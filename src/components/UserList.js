@@ -6,18 +6,19 @@ import {
   getTmdbConfig, 
   getConfigError
  } from '../reducers/index';
+ import { ErrorMessage } from '../styles';
 
 const UserList = props => {
 
   const { filmsList, config, configError } = props;
 
   if (!filmsList.length) {
-    return <div>No movies added! :(</div>;
+    return <ErrorMessage>No movies added! :(</ErrorMessage>;
   }
 
   if (configError) {
     console.error(configError);
-    return <div>There was a network issue. Please, reload the application</div>
+    return <ErrorMessage>There was a network issue. Please, reload the application</ErrorMessage>
   }
 
   const movieBoxProps = {

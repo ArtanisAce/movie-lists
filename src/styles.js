@@ -1,4 +1,4 @@
-import { keyframes, css } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 /*
   Animations
@@ -33,6 +33,14 @@ export const fadeIn = keyframes`
 //     opacity: 0;
 //   }
 // `;
+
+/* Common components styles */
+
+export const ErrorMessage = styled.div`
+  font-size: 16px;
+  font-weight: bold;
+  margin: 32px;
+`;
 
 /*
   Media Queries config in styled-components

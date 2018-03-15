@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { addFilm } from '../actions/index';
-import { 
-  getSearchResults, 
-  getTmdbConfig, 
+import {
+  getSearchResults,
+  getTmdbConfig,
   getIsFetching,
   getSearchError,
   getConfigError
- } from '../reducers/index';
+} from '../reducers/index';
 import MovieList from './MovieList';
+import { ErrorMessage } from '../styles';
 
 class SearchResults extends Component {
 
   constructor() {
     super();
-    this.state = { hideButtons: {}, errorCounter: 4 };
+    this.state = { hideButtons: {} };
     this.addMovie = this.addMovie.bind(this);
-    this.decreaseCounter = this.decreaseCounter.bind(this);
   }
 
   addMovie(movieId) {
@@ -26,45 +25,30 @@ class SearchResults extends Component {
     this.setState({ hideButtons: Object.assign(this.state.hideButtons, { [movieId]: true }) });
   }
 
-  decreaseCounter() {
-    if (this.state.errorCounter > 0) {
-      this.setState({errorCounter: this.state.errorCounter - 1});
-    }
-  }
-
   render() {
-    const { 
-      searchResult, 
-      config, 
-      searchError, 
-      configError, 
+    const {
+      searchResult,
+      config,
+      searchError,
+      configError,
       isFetching } = this.props
 
-    if (isFetching && !searchResult.length) {
-      return <div>Loading...</div>
-    }
-
-    if (!searchResult.length) {
-      return <div>Couldn't find any film that matches the search...</div>
+    if (isFetching && !searchResult.length && !searchError && !configError) {
+      return <ErrorMessage>Loading...</ErrorMessage>
     }
 
     if (configError) {
       console.error(configError);
-      return <div>There was a network issue. Please, reload the application</div>
+      return <ErrorMessage>There was a network issue. Please, reload the application</ErrorMessage>
     }
 
     if (searchError) {
-      const counter = this.state.errorCounter;
       console.error(searchError);
-      this.decreaseCounter();
-      return
-      (
-        <div>
-          <div>Oops, something went wrong with the search! Redirecting to home page...</div>
-          <div>{counter}</div>
-          !counter ? <Redirect to='/' /> : null
-        </div>
-      )
+      return <ErrorMessage>Oops, something went wrong with the search!</ErrorMessage>
+    }
+
+    if (!searchResult.length) {
+      return <ErrorMessage>Couldn't find any film that matches the search...</ErrorMessage>
     }
 
     const movieBoxProps = {

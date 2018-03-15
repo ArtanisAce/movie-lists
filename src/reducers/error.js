@@ -4,6 +4,8 @@ const searchError = (state = null, action) => {
   switch (action.type) {
     case 'SEARCH_ERROR':
       return action.error;
+    case 'SEARCH_RESULTS':
+      return null;
     default:
       return state;
   }
@@ -13,6 +15,8 @@ const configError = (state = null, action) => {
   switch (action.type) {
     case 'CONFIG_ERROR':
       return action.error;
+    case 'GET_CONFIG':
+      return null;
     default:
       return state;
   }
