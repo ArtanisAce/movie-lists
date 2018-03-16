@@ -49,6 +49,8 @@ class App extends Component {
 
   render() {
 
+    const location = this.props.location.pathname;
+
     const theme = {
       mainColor: '#CC0000',
       secondaryColor: '#F5F5DC',
@@ -60,7 +62,7 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <div>
-          <NavBar />
+          <NavBar location={location}/>
           <MainContent />
         </div>
       </ThemeProvider>

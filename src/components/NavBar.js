@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import ReactSVG from 'react-svg';
 import arnieLogo from '../svg/arnold-schwarzenegger.svg';
+import leoLogo from '../svg/leonardo-di-caprio.svg';
+import filmLogo from '../svg/film.svg';
+import popcornLogo from '../svg/popcorn.svg';
 
 const NavigationBar = styled.div`
   display: flex;
@@ -22,13 +25,14 @@ const Title = styled.h1`
   font-family: 'Raleway Thin', 'Times New Roman', serif;
 `;
 
-const ArnieLogo = styled(ReactSVG)`
-  height: 72px;
-  align-self: flex-start;
+const Logo = styled(ReactSVG)`
+  height: 64px;
+  margin-left: 16px;
 `;
 
 const LogoContainer = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 const LinkContainer = styled.nav`
@@ -52,11 +56,27 @@ const NavLink = styled(Link) `
 `;
 
 const NavBar = (props) => {
+
+  let logo;
+  switch(props.location) {
+    case '/movie-list':
+    logo = filmLogo;
+    break;
+    case '/create-user':
+    logo = leoLogo;
+    break;
+    case '/search-results':
+    logo = popcornLogo;
+    break;
+    default:
+    logo = arnieLogo;
+  }
+
   return (
     <NavigationBar role='navigation'>
       <LogoContainer>
         <Title role='banner'>Movie Lists</Title>
-        <ArnieLogo path={arnieLogo} />
+        <Logo path={logo} />
       </LogoContainer>
       <LinkContainer>
         <NavLink to='/'>HOME</NavLink>
@@ -66,7 +86,6 @@ const NavBar = (props) => {
       </LinkContainer>
     </NavigationBar>
   );
-
 }
 
 export default NavBar;
