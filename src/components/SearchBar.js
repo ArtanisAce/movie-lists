@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { searchFilm } from '../actions/index';
 import { Redirect } from 'react-router-dom';
+import { SubmitButton } from '../styles';
 
 const SearchForm = styled.div`
   display: flex;
@@ -29,20 +30,6 @@ const SearchInput = styled.input`
   padding: 0.6em;
   border: 1px solid ${props => props.theme.mainColor};
 `;
-
-const SearchButton = styled.button`
-  padding: 0.6em 0.8em;
-  background-color: ${props => props.disabled ?
-    props.theme.disabledButton : props.theme.mainColor};
-  color: white;
-  border: none;
-  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
-  &:hover {
-    background: ${props =>
-    props.disabled ? props.theme.disabledButton : props.theme.hoverButtonColor};
-  }
-`;
-
 
 class SearchBar extends Component {
   constructor() {
@@ -75,9 +62,9 @@ class SearchBar extends Component {
             placeholder='Search for a movie...'
             onChange={this.onInputChange}
             value={this.state.movieToSearch} />
-          <SearchButton type='submit' disabled={!this.state.movieToSearch}>
+          <SubmitButton type='submit' disabled={!this.state.movieToSearch}>
             Find!
-          </SearchButton>
+          </SubmitButton>
         </SearchForm>
       </form>
     );

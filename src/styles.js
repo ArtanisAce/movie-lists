@@ -42,6 +42,19 @@ export const ErrorMessage = styled.div`
   margin: 32px;
 `;
 
+export const SubmitButton = styled.button`
+  padding: 0.6em 0.8em;
+  background-color: ${props => props.disabled ?
+    props.theme.disabledButton : props.theme.mainColor};
+  color: white;
+  border: none;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  &:hover {
+    background: ${props =>
+    props.disabled ? props.theme.disabledButton : props.theme.hoverButtonColor};
+  }
+`;
+
 /*
   Media Queries config in styled-components
 */

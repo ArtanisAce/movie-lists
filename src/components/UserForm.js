@@ -3,30 +3,38 @@ import React from 'react';
 import styled from 'styled-components';
 import { withFormik } from 'formik';
 import { movieGenres } from '../constants';
+import { SubmitButton } from '../styles';
 
 const CreateUserForm = styled.form`
   display: flex;
-  width: 30%;
+  width: 75%;
+  margin: 24px auto;
   flex-direction: column;
-  input, button, select {
+  align-items: center;
+  input, button, select, option {
+    text-transform: capitalize;
     font-family: 'Sanchez', Arial, serif;
   }
 `;
 
+const InputLabel = styled.label`
+  margin-bottom: 12px;
+`;
+
 const FormInput = styled.input`
+  margin-bottom: ${props => props.theme.lowMargin};
   padding: 0.6em;
+  width: 65%;
 `;
 
 const Error = styled.div`
   color: red;
+  margin-bottom: ${props => props.theme.lowMargin};
 `;
 
 const GenreDropdown = styled.select`
   padding: 0.3em;
-`;
-
-const Genre = styled.option`
-  text-transform: capitalize;
+  margin-bottom: ${props => props.theme.lowMargin};
 `;
 
 const InnerForm = ({
@@ -39,7 +47,7 @@ const InnerForm = ({
   isSubmitting,
 }) => (
     <CreateUserForm onSubmit={handleSubmit}>
-      <label htmlFor='email'>Email</label>
+      <InputLabel htmlFor='email'>Email</InputLabel>
       <FormInput
         type='email'
         name='email'
@@ -48,7 +56,7 @@ const InnerForm = ({
         value={values.email}
       />
       {touched.email && errors.email && <Error>{errors.email}</Error>}
-      <label htmlFor='password'>Password</label>
+      <InputLabel htmlFor='password'>Password</InputLabel>
       <FormInput
         type='password'
         name='password'
@@ -57,9 +65,6 @@ const InnerForm = ({
         value={values.password}
       />
       {touched.password && errors.password && <Error>{errors.password}</Error>}
-      <button type='submit' disabled={isSubmitting}>
-        Submit
-      </button>
       <GenreDropdown
         name='genre'
         onChange={handleChange}
@@ -68,11 +73,14 @@ const InnerForm = ({
         <option value='default' disabled>Choose your favourite genre...</option>
         {movieGenres.map(
           (genre, index) => (
-            <Genre key={index} value={genre}>{genre}</Genre>
+            <option key={index} value={genre}>{genre}</option>
           )
         )}
       </GenreDropdown>
       {touched.genre && errors.genre && <Error>{errors.genre}</Error>}
+      <SubmitButton type='submit' disabled={isSubmitting}>
+        Submit
+      </SubmitButton>
     </CreateUserForm>
   );
 

@@ -56,7 +56,8 @@ class App extends Component {
       secondaryColor: '#F5F5DC',
       boxShadowColor: 'lightgray',
       hoverButtonColor: '#660000',
-      disabledButton: 'darkgray'
+      disabledButton: 'darkgray',
+      lowMargin: '16px'
     }
 
     return (
