@@ -1,18 +1,20 @@
 import styled, { keyframes, css } from 'styled-components';
+import ReactSVG from 'react-svg';
+
 
 /*
   Animations
 */
 
-// const rotate360 = keyframes`
-//   from {
-//     transform: rotate(0deg);
-//   }
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
 
-//   to {
-//     transform: rotate(360deg);
-//   }
-// `;
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 export const fadeIn = keyframes`
   from {
@@ -40,6 +42,12 @@ export const ErrorMessage = styled.div`
   font-size: 16px;
   font-weight: bold;
   margin: 32px;
+  animation: ${rotate360} 1s;
+`;
+
+export const LoadingIndicator = styled(ReactSVG)`
+  height: 64px;
+  margin-top: 48px;
 `;
 
 export const SubmitButton = styled.button`

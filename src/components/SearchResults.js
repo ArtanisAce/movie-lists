@@ -9,7 +9,8 @@ import {
   getConfigError
 } from '../reducers/index';
 import MovieList from './MovieList';
-import { ErrorMessage } from '../styles';
+import filmRoll from '../svg/big-film-roll.svg';
+import { ErrorMessage, LoadingIndicator } from '../styles';
 
 class SearchResults extends Component {
 
@@ -34,7 +35,12 @@ class SearchResults extends Component {
       isFetching } = this.props
 
     if (isFetching && !searchResult.length && !searchError && !configError) {
-      return <ErrorMessage>Loading...</ErrorMessage>
+      return (
+        <div>
+          <div>Loading...</div>
+          <LoadingIndicator path={filmRoll} />
+        </div>
+      )
     }
 
     if (configError) {
