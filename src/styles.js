@@ -1,7 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
 import ReactSVG from 'react-svg';
 
-
 /*
   Animations
 */
@@ -42,12 +41,12 @@ export const ErrorMessage = styled.div`
   font-size: 16px;
   font-weight: bold;
   margin: 32px;
-  animation: ${rotate360} 1s;
 `;
 
 export const LoadingIndicator = styled(ReactSVG)`
   height: 64px;
   margin-top: 48px;
+  animation: ${rotate360} 1s;
 `;
 
 export const SubmitButton = styled.button`
