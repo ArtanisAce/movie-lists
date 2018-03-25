@@ -27,7 +27,7 @@ export const getTmdbConfig = state =>
   fromConfig.getTmdbConfig(state.config);
 
 export const getFilmsList = state =>
-  fromFilmsList.getFilmsList(state);
+  fromFilmsList.getFilmsList(state.filmsList);
 
 export const getFilmDetails = state =>
   fromShowFilm.getFilmDetails(Object.assign({},

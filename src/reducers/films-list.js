@@ -9,7 +9,7 @@ export default (state = [], action) => {
 
 export const getFilmsList = state => {
 
-  return state.filmsList ? state.filmsList.map(movie => {
+  return state ? state.map(movie => {
     return {
       id: movie.id,
       title: movie.title,
