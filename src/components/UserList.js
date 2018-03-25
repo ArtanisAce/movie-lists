@@ -17,7 +17,6 @@ const UserList = props => {
   }
 
   if (configError) {
-    console.error(configError);
     return <ErrorMessage>There was a network issue. Please, reload the application</ErrorMessage>
   }
 

@@ -44,12 +44,10 @@ class SearchResults extends Component {
     }
 
     if (configError) {
-      console.error(configError);
       return <ErrorMessage>There was a network issue. Please, reload the application</ErrorMessage>
     }
 
     if (searchError) {
-      console.error(searchError);
       return <ErrorMessage>Oops, something went wrong with the search!</ErrorMessage>
     }
 

@@ -46,7 +46,8 @@ export const ErrorMessage = styled.div`
 export const LoadingIndicator = styled(ReactSVG)`
   height: 64px;
   margin-top: 48px;
-  animation: ${rotate360} 1s;
+  animation: ${rotate360} 2s;
+  animation-iteration-count: infinite;
 `;
 
 export const SubmitButton = styled.button`
