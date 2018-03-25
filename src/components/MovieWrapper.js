@@ -1,24 +1,41 @@
 import React from 'react';
-import { showFilm } from '..actions/index';
 import { connect } from 'react-redux';
+import { showFilm } from '../actions/index';
+import { getFilmDetails } from '../reducers/index';
+import { LoadingIndicator } from '../styles';
+import filmRoll from '../svg/big-film-roll.svg';
 
 class MovieWrapper extends React.Component {
 
   componentDidMount() {
-    // call action creator. This should search for the film, on the store,
-    // and get the state. User films list should then be saved aswell as the whole
-    // films object, in order to find a film that was clicked for full details
-    // in UserList
+    this.props.showFilm(parseInt(this.props.match.params.id, 10));
   }
 
   render() {
-    const movieId = parseInt(props.match.params.id, 10);
+    
+    if (!this.props.movie) {
+      return (
+        <div>
+        <div>Loading...</div>
+        <LoadingIndicator path={filmRoll} />
+      </div>
+      );
+    }
+
+    //Display error, have an isFetching flag? We're getting the details from state...
+
     return (
       <div>
-        {movieId}
+        {this.props.movie.id}
+        {this.props.movie.title}
+        {/* Render here <Movie> component, pure presentational, CSS Grid layouted*/}
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  movie: getFilmDetails(state)
+});
 
 export default connect(mapStateToProps, { showFilm })(MovieWrapper);

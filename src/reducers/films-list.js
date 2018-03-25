@@ -7,4 +7,15 @@ export default (state = [], action) => {
   }
 };
 
-export const getFilmsList = (state) => state.filmsList;
+export const getFilmsList = state => {
+
+  return state.filmsList ? state.filmsList.map(movie => {
+    return {
+      id: movie.id,
+      title: movie.title,
+      releaseDate: movie.release_date.slice(0, 4),
+      overview: movie.overview ? movie.overview.slice(0, 300) : '',
+      posterPath: movie.poster_path
+    }
+  }) : [];
+}

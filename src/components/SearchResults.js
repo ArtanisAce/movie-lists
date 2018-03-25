@@ -22,7 +22,7 @@ class SearchResults extends Component {
 
   addMovie(movieId) {
     const film = this.props.searchResult.find(movie => movie.id === movieId);
-    this.props.addFilm(film);
+    this.props.addFilm(film.id);
     this.setState({ hideButtons: Object.assign(this.state.hideButtons, { [movieId]: true }) });
   }
 

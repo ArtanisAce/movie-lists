@@ -16,10 +16,16 @@ export const getConfig = () => {
   };
 }
 
-export const addFilm = film => {
-  return {
-    type: actionTypes.ADD_FILM,
-    film
+export const addFilm = filmId => {
+  return (dispatch, getState) => {
+    // Save full movie object, so we will be able to have all movie data
+    // in order to show on Movie component (full details) without having
+    // to make an additional http request
+    const fullMovie = getState().filmSearch.results.find(movie => filmId === movie.id);
+    dispatch({
+      type: actionTypes.ADD_FILM,
+      film: fullMovie
+    });
   };
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
-import Movie from './MovieWrapper';
+import MovieWrapper from './MovieWrapper';
 import UserList from './UserList';
 import SearchResults from './SearchResults';
 import UserForm from './UserForm';
