@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { showFilm } from '../actions/index';
-import { getFilmDetails } from '../reducers/index';
-import { LoadingIndicator } from '../styles';
+import { getFilmDetails, getTmdbConfig, getConfigError } from '../reducers/index';
+import { ErrorMessage, LoadingIndicator } from '../styles';
 import filmRoll from '../svg/big-film-roll.svg';
+import Movie from './Movie';
 
 class MovieWrapper extends React.Component {
 
@@ -12,30 +13,32 @@ class MovieWrapper extends React.Component {
   }
 
   render() {
-    
+
     if (!this.props.movie) {
       return (
         <div>
-        <div>Loading...</div>
-        <LoadingIndicator path={filmRoll} />
-      </div>
+          <div>Loading...</div>
+          <LoadingIndicator path={filmRoll} />
+        </div>
       );
+    }
+
+    if (this.props.configError) {
+      return <ErrorMessage>There was a network issue. Please, reload the application</ErrorMessage>
     }
 
     //Display error, have an isFetching flag? We're getting the details from state...
 
     return (
-      <div>
-        {this.props.movie.id}
-        {this.props.movie.title}
-        {/* Render here <Movie> component, pure presentational, CSS Grid layouted*/}
-      </div>
+      <Movie {...this.props.movie} config={this.props.config} />
     );
   }
 }
 
 const mapStateToProps = state => ({
-  movie: getFilmDetails(state)
+  movie: getFilmDetails(state),
+  config: getTmdbConfig(state),
+  configError: getConfigError(state, 3),
 });
 
 export default connect(mapStateToProps, { showFilm })(MovieWrapper);

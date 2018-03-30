@@ -37,6 +37,10 @@ export const fadeIn = keyframes`
 
 /* Common components styles */
 
+export const NoPosterFilm = styled(ReactSVG) `
+  width: ${props => props.width};
+`;
+
 export const ErrorMessage = styled.div`
   font-size: 16px;
   font-weight: bold;

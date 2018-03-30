@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import ReactSVG from 'react-svg';
 import Fade from './Fade';
-import { fadeIn } from '../styles';
+import { fadeIn, NoPosterFilm } from '../styles';
 import filmLogo from '../svg/film.svg';
 
-export const BoxContainer = styled.li`
+const BoxContainer = styled.li`
   margin: 32px;
   padding: 24px;
   border: 1px solid ${props => props.theme.mainColor};
@@ -20,7 +19,7 @@ export const BoxContainer = styled.li`
   /* on smaller screens, eliminate width limit*/
 `;
 
-export const MoviePoster = styled.img`
+const MoviePoster = styled.img`
   display: inline-block;
   max-width: 100%;
 `;
@@ -61,10 +60,6 @@ const Plot = styled.p`
 
 const AddedText = styled.p`
   margin-right: 20px;
-`;
-
-const NoPosterFilm = styled(ReactSVG) `
-  width: 92px;
 `;
 
 const MovieBox = (props) => {
@@ -108,7 +103,7 @@ const MovieBox = (props) => {
           src={`${config.imagesUrl}/${config.posterSizes}${posterPath}`}
           alt={`${title} poster`} />
         :
-        <NoPosterFilm path={filmLogo}/>
+        <NoPosterFilm width="92px" path={filmLogo}/>
       }
       {addMovieButton &&
         <Fade duration={800} in={!hideButton} appear={true}>

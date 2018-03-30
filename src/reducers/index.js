@@ -23,16 +23,17 @@ export const getSearchResults = state =>
 export const getIsFetching = state =>
   fromSearch.getIsFetching(state.filmSearch);
 
-export const getTmdbConfig = state =>
-  fromConfig.getTmdbConfig(state.config);
+export const getTmdbConfig = (state, posterSize = 0) =>
+  fromConfig.getTmdbConfig(state.config, posterSize);
 
 export const getFilmsList = state =>
   fromFilmsList.getFilmsList(state.filmsList);
 
 export const getFilmDetails = state =>
   fromShowFilm.getFilmDetails(Object.assign({},
-    { searchResults: state.filmSearch.results }, { filmsList: state.filmsList },
-    { filmToShowId: state.filmToShow }));
+    { searchResults: state.filmSearch.results },
+    { filmsList: state.filmsList },
+    { filmToShow: state.filmToShow }));
 
 export const getSearchError = state =>
   fromError.getSearchError(state.error);
