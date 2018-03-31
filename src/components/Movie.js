@@ -6,22 +6,22 @@ import filmLogo from '../svg/film.svg';
 
 const MoviePage = styled.div`
   display: grid;
-  grid-template-columns: 30% 50% 20%;
+  grid-template-columns: 30% 60% 10%;
   grid-template-rows: 15% 15% 40% 30%;
+  justify-items: center;
   margin: 32px;
 `;
 
 const Title = styled.h1`
   font-weight: bold;
-  grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column: 2 / 3;
 
 `;
 
-const OriginalTitle = styled.h2`
+const OriginalTitle = styled.h3`
   font-style: italic;
-  grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column: 2 / 3;
+  margin: 0 auto 48px;
 `;
 
 const MovieOverview = styled.p`
@@ -30,13 +30,12 @@ const MovieOverview = styled.p`
 
 const Poster = styled.img`
   grid-row: 3 / 5;
-  justify-self: center;
 `;
 
 const AverageScore = styled.div`
-  font-size: 48px;
   grid-row: 3 / 4;
-  justify-self: start;
+  font-size: 48px;
+  color: ${props => props.theme.mainColor};
 `;
 
 const Movie = (props) => {
