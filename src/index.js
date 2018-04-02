@@ -10,6 +10,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { loadState, saveState } from './redux-localStorage.js';
 import throttle from 'lodash.throttle';
 
+import './polyfills/index';
 
 const persistedState = loadState(); // Rehydrate state using localStorage
 

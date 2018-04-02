@@ -5,37 +5,50 @@ import { NoPosterFilm } from '../styles';
 import filmLogo from '../svg/film.svg';
 
 const MoviePage = styled.div`
-  display: grid;
-  grid-template-columns: 30% 60% 10%;
-  grid-template-rows: 15% 15% 40% 30%;
-  justify-items: center;
+/* TODO: add IE layout using floats or other method, make a similar look like Chrome / FF */
   margin: 32px;
+  @supports (display: grid) { 
+    /* Progressive Enhancement -> https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid_and_Progressive_Enhancement  */
+    display: grid;
+    grid-template-columns: 30% 60% 10%;
+    grid-template-rows: 15% 15% 40% 30%;
+    justify-items: center;
+  }
 `;
 
 const Title = styled.h1`
   font-weight: bold;
+  @supports (display: grid) {
   grid-column: 2 / 3;
-
+  }
 `;
 
 const OriginalTitle = styled.h3`
   font-style: italic;
-  grid-column: 2 / 3;
   margin: 0 auto 48px;
+  @supports (display: grid) {
+    grid-column: 2 / 3;
+  }
 `;
 
 const MovieOverview = styled.p`
-  grid-row: 3 / 5;
+  @supports (display: grid) {
+    grid-row: 3 / 5;
+  }
 `;
 
 const Poster = styled.img`
-  grid-row: 3 / 5;
+  @supports (display: grid) {
+    grid-row: 3 / 5;
+  }
 `;
 
 const AverageScore = styled.div`
-  grid-row: 3 / 4;
   font-size: 48px;
   color: ${props => props.theme.mainColor};
+  @supports (display: grid) {
+    grid-row: 3 / 4;
+  }
 `;
 
 const Movie = (props) => {
