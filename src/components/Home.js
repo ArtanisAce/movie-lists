@@ -7,6 +7,7 @@ import ReactSVG from 'react-svg';
 const TMDBLogo = styled(ReactSVG) `
   float: right;
   height: 48px;
+  width: 122px;
   margin-right: 16px;
 `;
 

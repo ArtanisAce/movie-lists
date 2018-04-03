@@ -27,6 +27,7 @@ const Title = styled.h1`
 
 const Logo = styled(ReactSVG)`
   height: 64px;
+  width: 64px;
   margin-left: 16px;
 `;
 
