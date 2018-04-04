@@ -7,10 +7,10 @@ import filmLogo from '../svg/film.svg';
 const MoviePage = styled.div`
   margin: 32px;
   display: -ms-grid;
-  -ms-grid-columns: 30% 60% 10%;
+  -ms-grid-columns: 25% 50% 25%;
   -ms-grid-rows: 15% 15% 40% 30%;
   display: grid;
-  grid-template-columns: 30% 60% 10%;
+  grid-template-columns: 25% 50% 25%;
   grid-template-rows: 15% 15% 40% 30%;
   justify-items: center;
 
@@ -52,7 +52,7 @@ const Poster = styled.img`
 `;
 
 const AverageScore = styled.div`
-  font-size: 48px;
+  font-size: 56px;
   color: ${props => props.theme.mainColor};
   -ms-grid-row: 3;
   -ms-grid-row-span: 1;

@@ -37,7 +37,7 @@ class MovieWrapper extends React.Component {
 
 const mapStateToProps = state => ({
   movie: getFilmDetails(state),
-  config: getTmdbConfig(state, 2),
+  config: getTmdbConfig(state, 3),
   configError: getConfigError(state),
 });
 
