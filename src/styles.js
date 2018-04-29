@@ -1,5 +1,5 @@
-import styled, { keyframes, css } from 'styled-components';
-import ReactSVG from 'react-svg';
+import styled, { keyframes, css } from "styled-components";
+import ReactSVG from "react-svg";
 
 /*
   Animations
@@ -37,7 +37,7 @@ export const fadeIn = keyframes`
 
 /* Common components styles */
 
-export const NoPosterFilm = styled(ReactSVG) `
+export const NoPosterFilm = styled(ReactSVG)`
   width: ${props => props.width};
 `;
 
@@ -56,14 +56,17 @@ export const LoadingIndicator = styled(ReactSVG)`
 
 export const SubmitButton = styled.button`
   padding: 0.6em 0.8em;
-  background-color: ${props => props.disabled ?
-    props.theme.disabledButton : props.theme.mainColor};
+  background-color: ${props =>
+    props.disabled ? props.theme.disabledButton : props.theme.mainColor};
   color: white;
   border: none;
-  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  transition: background ease-in-out 0.5s;
+  cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
   &:hover {
     background: ${props =>
-    props.disabled ? props.theme.disabledButton : props.theme.hoverButtonColor};
+      props.disabled
+        ? props.theme.disabledButton
+        : props.theme.hoverButtonColor};
   }
 `;
 
@@ -76,19 +79,17 @@ const sizes = {
   desktop: 992,
   tablet: 768,
   phone: 376
-}
+};
 
 // iterate through the sizes and create a media template
 export const media = Object.keys(sizes).reduce((accumulator, label) => {
   // use em in breakpoints to work properly cross-browser and support users
   // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
-  const emSize = sizes[label] / 16
+  const emSize = sizes[label] / 16;
   accumulator[label] = (...args) => css`
     @media (max-width: ${emSize}em) {
-      ${css(...args)}
+      ${css(...args)};
     }
-  `
-  return accumulator
+  `;
+  return accumulator;
 }, {});
-
-

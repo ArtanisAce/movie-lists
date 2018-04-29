@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { addFilm } from '../actions/index';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { addFilm } from "../actions/index";
 import {
   getSearchResults,
   getTmdbConfig,
   getIsFetching,
   getSearchError,
   getConfigError
-} from '../reducers/index';
-import MovieList from './MovieList';
-import filmRoll from '../svg/big-film-roll.svg';
-import { ErrorMessage, LoadingIndicator } from '../styles';
+} from "../reducers/index";
+import MovieList from "./MovieList";
+import filmRoll from "../svg/big-film-roll.svg";
+import { ErrorMessage, LoadingIndicator } from "../styles";
 
 class SearchResults extends Component {
-
   constructor() {
     super();
     this.state = { hideButtons: {} };
@@ -23,7 +22,9 @@ class SearchResults extends Component {
   addMovie(movieId) {
     const film = this.props.searchResult.find(movie => movie.id === movieId);
     this.props.addFilm(film.id);
-    this.setState({ hideButtons: Object.assign(this.state.hideButtons, { [movieId]: true }) });
+    this.setState({
+      hideButtons: Object.assign(this.state.hideButtons, { [movieId]: true })
+    });
   }
 
   render() {
@@ -32,7 +33,8 @@ class SearchResults extends Component {
       config,
       searchError,
       configError,
-      isFetching } = this.props
+      isFetching
+    } = this.props;
 
     if (isFetching && !searchResult.length && !searchError && !configError) {
       return (
@@ -40,32 +42,43 @@ class SearchResults extends Component {
           <div>Loading...</div>
           <LoadingIndicator path={filmRoll} />
         </div>
-      )
+      );
     }
 
     if (configError) {
-      return <ErrorMessage>There was a network issue. Please, reload the application</ErrorMessage>
+      return (
+        <ErrorMessage>
+          There was a network issue. Please, reload the application
+        </ErrorMessage>
+      );
     }
 
     if (searchError) {
-      return <ErrorMessage>Oops, something went wrong with the search!</ErrorMessage>
+      return (
+        <ErrorMessage>Oops, something went wrong with the search!</ErrorMessage>
+      );
     }
 
     if (!searchResult.length) {
-      return <ErrorMessage>Couldn't find any film that matches the search...</ErrorMessage>
+      return (
+        <ErrorMessage>
+          Couldn't find any film that matches the search...
+        </ErrorMessage>
+      );
     }
 
     const movieBoxProps = {
       addMovieButton: true,
       config: config,
-      addMovie: this.addMovie,
-    }
+      addMovie: this.addMovie
+    };
 
     return (
       <MovieList
         films={searchResult}
         movieBoxProps={movieBoxProps}
-        hideButtons={this.state.hideButtons} />
+        hideButtons={this.state.hideButtons}
+      />
     );
   }
 }
@@ -78,7 +91,7 @@ const mapStateToProps = state => ({
   isFetching: getIsFetching(state)
 });
 
-// Passing an object full of actions will automatically run each action 
+// Passing an object full of actions will automatically run each action
 // through the bindActionCreators utility, and turn them into props
 //http://blog.isquaredsoftware.com/2016/10/idiomatic-redux-why-use-action-creators/
 export default connect(mapStateToProps, { addFilm })(SearchResults);

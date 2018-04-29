@@ -1,12 +1,11 @@
-import React from 'react';
-import Transition from 'react-transition-group/Transition';
+import React from "react";
+import Transition from "react-transition-group/Transition";
 
 const Fade = ({ children, duration, in: inProp }) => {
-
   const defaultStyle = {
     transition: `opacity ${duration}ms ease-in-out`,
-    opacity: 1,
-  }
+    opacity: 1
+  };
 
   const transitionStyles = {
     exiting: { opacity: 0 },
@@ -15,12 +14,11 @@ const Fade = ({ children, duration, in: inProp }) => {
 
   return (
     <Transition in={inProp} timeout={duration}>
-      {(state) => {
+      {state => {
         return React.cloneElement(children, {
           style: Object.assign({}, defaultStyle, transitionStyles[state])
-        })
-      }
-      }
+        });
+      }}
     </Transition>
   );
 };

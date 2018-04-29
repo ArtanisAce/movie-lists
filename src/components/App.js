@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getConfig } from '../actions/index';
-import styledSanitize from 'styled-sanitize'
-import { injectGlobal, ThemeProvider } from 'styled-components';
-import NavBar from './NavBar';
-import MainContent from './MainContent';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { getConfig } from "../actions/index";
+import styledSanitize from "styled-sanitize";
+import { injectGlobal, ThemeProvider } from "styled-components";
+import NavBar from "./NavBar";
+import MainContent from "./MainContent";
 
 injectGlobal`
 
@@ -42,28 +42,26 @@ injectGlobal`
 `;
 
 class App extends Component {
-
   componentDidMount() {
     this.props.getConfig();
   }
 
   render() {
-
     const location = this.props.location.pathname;
 
     const theme = {
-      mainColor: '#CC0000',
-      secondaryColor: '#F5F5DC',
-      boxShadowColor: 'lightgray',
-      hoverButtonColor: '#660000',
-      disabledButton: 'darkgray',
-      lowMargin: '16px'
-    }
+      mainColor: "#CC0000",
+      secondaryColor: "#F5F5DC",
+      boxShadowColor: "lightgray",
+      hoverButtonColor: "#660000",
+      disabledButton: "darkgray",
+      lowMargin: "16px"
+    };
 
     return (
       <ThemeProvider theme={theme}>
         <div>
-          <NavBar location={location}/>
+          <NavBar location={location} />
           <MainContent />
         </div>
       </ThemeProvider>

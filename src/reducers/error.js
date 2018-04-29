@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
 const searchError = (state = null, action) => {
   switch (action.type) {
-    case 'SEARCH_ERROR':
+    case "SEARCH_ERROR":
       return action.error;
-    case 'SEARCH_RESULTS':
+    case "SEARCH_RESULTS":
       return null;
     default:
       return state;
@@ -13,9 +13,9 @@ const searchError = (state = null, action) => {
 
 const configError = (state = null, action) => {
   switch (action.type) {
-    case 'CONFIG_ERROR':
+    case "CONFIG_ERROR":
       return action.error;
-    case 'GET_CONFIG':
+    case "GET_CONFIG":
       return null;
     default:
       return state;

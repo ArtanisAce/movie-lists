@@ -1,6 +1,6 @@
 const configReducer = (state = {}, action) => {
   switch (action.type) {
-    case 'GET_CONFIG':
+    case "GET_CONFIG":
       return action.response;
     default:
       return state;
@@ -14,7 +14,7 @@ export const getTmdbConfig = (state, posterSize) => {
     return {
       imagesUrl: state.images.base_url,
       posterSizes: state.images.poster_sizes[posterSize]
-    }
+    };
   } else {
     return {};
   }

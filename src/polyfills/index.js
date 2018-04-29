@@ -5,4 +5,4 @@
 //   2) In the polyfill file, make sure you turn off any eslint checks that you need to (mostly just /* eslint no-extend-native: "off" */)
 
 // Array.find is not yet available with Internet Explorer, so we add the polyfill here.
-import './poly-find';
+import "./poly-find";

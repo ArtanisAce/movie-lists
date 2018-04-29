@@ -1,15 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import MovieList from './MovieList';
-import { 
-  getFilmsList, 
-  getTmdbConfig, 
-  getConfigError
- } from '../reducers/index';
- import { ErrorMessage } from '../styles';
+import React from "react";
+import { connect } from "react-redux";
+import MovieList from "./MovieList";
+import { getFilmsList, getTmdbConfig, getConfigError } from "../reducers/index";
+import { ErrorMessage } from "../styles";
 
 const UserList = props => {
-
   const { filmsList, config, configError } = props;
 
   if (!filmsList.length) {
@@ -17,19 +12,18 @@ const UserList = props => {
   }
 
   if (configError) {
-    return <ErrorMessage>There was a network issue. Please, reload the application</ErrorMessage>
+    return (
+      <ErrorMessage>
+        There was a network issue. Please, reload the application
+      </ErrorMessage>
+    );
   }
 
   const movieBoxProps = {
     config
-  }
+  };
 
-  return (
-    <MovieList
-      films={filmsList}
-      movieBoxProps={movieBoxProps}
-    />
-  );
+  return <MovieList films={filmsList} movieBoxProps={movieBoxProps} />;
 };
 
 const mapStateToProps = state => ({

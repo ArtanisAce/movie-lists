@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import Fade from './Fade';
-import { fadeIn, NoPosterFilm } from '../styles';
-import filmLogo from '../svg/film.svg';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import Fade from "./Fade";
+import { fadeIn, NoPosterFilm } from "../styles";
+import filmLogo from "../svg/film.svg";
 
 const BoxContainer = styled.li`
   margin: 32px;
@@ -28,7 +28,7 @@ const MovieHeader = styled.div`
   width: 50%;
 `;
 
-const Title = styled(Link) `
+const Title = styled(Link)`
   display: block;
   font-weight: bold;
 `;
@@ -62,8 +62,7 @@ const AddedText = styled.p`
   margin-right: 20px;
 `;
 
-const MovieBox = (props) => {
-
+const MovieBox = props => {
   const {
     movie,
     hideButton,
@@ -73,44 +72,43 @@ const MovieBox = (props) => {
     config
   } = props;
 
-  const {
-    id,
-    title,
-    releaseDate,
-    overview,
-    posterPath
-  } = movie;
+  const { id, title, releaseDate, overview, posterPath } = movie;
 
-  const fadeChild = hideButton ?
-    (<AddedText key='child1'>Added!</AddedText>)
-    :
-    (<AddMovieBtn key='child2' aria-label='add-movie-button' onClick={() => addMovie(id)}>
+  const fadeChild = hideButton ? (
+    <AddedText key="child1">Added!</AddedText>
+  ) : (
+    <AddMovieBtn
+      key="child2"
+      aria-label="add-movie-button"
+      onClick={() => addMovie(id)}
+    >
       +
-    </AddMovieBtn>)
+    </AddMovieBtn>
+  );
 
   return (
     <BoxContainer key={keyIndex}>
       <MovieHeader>
         <Title to={`/movie/${id}`}>
-          {`${title} (${releaseDate ? releaseDate : 'Unknown'})`}
+          {`${title} (${releaseDate ? releaseDate : "Unknown"})`}
         </Title>
-        <Plot>
-          {overview ? `${overview}...` : `No overview available!`}
-        </Plot>
+        <Plot>{overview ? `${overview}...` : `No overview available!`}</Plot>
       </MovieHeader>
-      {posterPath ?
+      {posterPath ? (
         <MoviePoster
           src={`${config.imagesUrl}/${config.posterSizes}${posterPath}`}
-          alt={`${title} poster`} />
-        :
-        <NoPosterFilm width="92px" path={filmLogo}/>
-      }
-      {addMovieButton &&
+          alt={`${title} poster`}
+        />
+      ) : (
+        <NoPosterFilm width="92px" path={filmLogo} />
+      )}
+      {addMovieButton && (
         <Fade duration={800} in={!hideButton} appear={true}>
           {fadeChild}
-        </Fade>}
+        </Fade>
+      )}
     </BoxContainer>
-  )
+  );
 };
 
 export default MovieBox;
@@ -118,7 +116,7 @@ export default MovieBox;
 MovieBox.defaultProps = {
   hideButton: false,
   addMovieButton: false
-}
+};
 
 MovieBox.propTypes = {
   key: PropTypes.number.isRequired,
@@ -127,5 +125,4 @@ MovieBox.propTypes = {
   addMovieButton: PropTypes.boolean,
   config: PropTypes.object.isRequired,
   addMovie: PropTypes.func
-}
-
+};

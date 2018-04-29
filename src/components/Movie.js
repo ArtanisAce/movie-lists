@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { NoPosterFilm } from '../styles';
-import filmLogo from '../svg/film.svg';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { NoPosterFilm } from "../styles";
+import filmLogo from "../svg/film.svg";
 
 const MoviePage = styled.div`
   margin: 32px;
@@ -13,7 +13,6 @@ const MoviePage = styled.div`
   grid-template-columns: 25% 50% 25%;
   grid-template-rows: 15% 15% 40% 30%;
   justify-items: center;
-
 `;
 
 const Title = styled.h1`
@@ -62,8 +61,7 @@ const AverageScore = styled.div`
   grid-row: 3 / 4;
 `;
 
-const Movie = (props) => {
-
+const Movie = props => {
   const {
     title,
     originalTitle,
@@ -77,24 +75,26 @@ const Movie = (props) => {
 
   return (
     <MoviePage>
-      <Title>{`${title} (${releaseDate ? releaseDate : 'Unknown'})`}</Title>
+      <Title>{`${title} (${releaseDate ? releaseDate : "Unknown"})`}</Title>
       <OriginalTitle>{`(${originalTitle} - ${originalLang})`}</OriginalTitle>
-      <MovieOverview>{overview ? `${overview}` : `No overview found for this movie`}</MovieOverview>
-      {posterPath ?
+      <MovieOverview>
+        {overview ? `${overview}` : `No overview found for this movie`}
+      </MovieOverview>
+      {posterPath ? (
         <Poster
           src={`${config.imagesUrl}/${config.posterSizes}${posterPath}`}
-          alt={`${title} poster`} />
-        :
+          alt={`${title} poster`}
+        />
+      ) : (
         <NoPosterFilm width="480px" path={filmLogo} />
-      }
+      )}
       <AverageScore>{voteAverage}</AverageScore>
     </MoviePage>
-  )
-}
+  );
+};
 
 export default Movie;
 
 Movie.propTypes = {
   prop1: PropTypes.bool
-}
-
+};
