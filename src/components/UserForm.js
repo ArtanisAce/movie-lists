@@ -2,6 +2,7 @@ import React from "react";
 // import PropTypes from 'prop-types';
 import styled from "styled-components";
 import { withFormik } from "formik";
+import axios from "axios";
 import { movieGenres } from "../constants";
 import { SubmitButton } from "../styles";
 
@@ -119,7 +120,7 @@ const UserForm = withFormik({
     }
     return errors;
   },
-  handleSubmit: (
+  handleSubmit: async (
     values,
     {
       props,
@@ -127,6 +128,14 @@ const UserForm = withFormik({
       setErrors /* setValues, setStatus, and other goodies */
     }
   ) => {
+    // Pass all values except confirm Password
+    const { confirmPassword, ...formValues } = { ...values };
+    try {
+     const response = await axios.post("/create-user", formValues);
+     console.log(response);
+    } catch (e) {
+      console.error(e);
+    }
     
     // LoginToMyApp(values).then(
     //   user => {
