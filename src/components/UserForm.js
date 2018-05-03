@@ -2,6 +2,7 @@ import React from "react";
 // import PropTypes from 'prop-types';
 import styled from "styled-components";
 import { withFormik } from "formik";
+// import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { movieGenres } from "../constants";
 import { SubmitButton } from "../styles";
@@ -48,58 +49,63 @@ const InnerForm = ({
   handleChange,
   handleBlur,
   handleSubmit,
-  isSubmitting
-}) => (
-  <CreateUserForm onSubmit={handleSubmit}>
-    <InputLabel htmlFor="email">Email</InputLabel>
-    <FormInput
-      type="email"
-      name="email"
-      onChange={handleChange}
-      onBlur={handleBlur}
-      value={values.email}
-    />
-    {touched.email && errors.email && <Error>{errors.email}</Error>}
-    <InputLabel htmlFor="password">Password</InputLabel>
-    <FormInput
-      type="password"
-      name="password"
-      onChange={handleChange}
-      onBlur={handleBlur}
-      value={values.password}
-    />
-    {touched.password && errors.password && <Error>{errors.password}</Error>}
-    <InputLabel htmlFor="confirmPassword">Confirm Password</InputLabel>
-    <FormInput
-      type="password"
-      name="confirmPassword"
-      onChange={handleChange}
-      onBlur={handleBlur}
-      value={values.confirmPassword}
-    />
-    {touched.confirmPassword &&
-      errors.confirmPassword && <Error>{errors.confirmPassword}</Error>}
-    <GenreDropdown
-      name="genre"
-      onChange={handleChange}
-      onBlur={handleBlur}
-      value={values.genre}
-    >
-      <option value="default" disabled>
-        Choose your favourite genre...
-      </option>
-      {movieGenres.map((genre, index) => (
-        <option key={index} value={genre}>
-          {genre}
+  isSubmitting,
+  status
+}) =>
+  status && status.userCreated === true ? (
+    <div>User succesfully created!</div>
+  ) : (
+    <CreateUserForm onSubmit={handleSubmit}>
+      <InputLabel htmlFor="email">Email</InputLabel>
+      <FormInput
+        type="email"
+        name="email"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.email}
+      />
+      {touched.email && errors.email && <Error>{errors.email}</Error>}
+      <InputLabel htmlFor="password">Password</InputLabel>
+      <FormInput
+        type="password"
+        name="password"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.password}
+      />
+      {touched.password && errors.password && <Error>{errors.password}</Error>}
+      <InputLabel htmlFor="confirmPassword">Confirm Password</InputLabel>
+      <FormInput
+        type="password"
+        name="confirmPassword"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.confirmPassword}
+      />
+      {touched.confirmPassword &&
+        errors.confirmPassword && <Error>{errors.confirmPassword}</Error>}
+      <GenreDropdown
+        name="genre"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.genre}
+      >
+        <option value="default" disabled>
+          Choose your favourite genre...
         </option>
-      ))}
-    </GenreDropdown>
-    {touched.genre && errors.genre && <Error>{errors.genre}</Error>}
-    <SubmitButton type="submit" disabled={isSubmitting}>
-      Submit
-    </SubmitButton>
-  </CreateUserForm>
-);
+        {movieGenres.map((genre, index) => (
+          <option key={index} value={genre}>
+            {genre}
+          </option>
+        ))}
+      </GenreDropdown>
+      {touched.genre && errors.genre && <Error>{errors.genre}</Error>}
+      <SubmitButton type="submit" disabled={isSubmitting}>
+        Submit
+      </SubmitButton>
+      {errors.userCreated && <Error>{errors.userCreated}</Error>}
+    </CreateUserForm>
+  );
 
 const UserForm = withFormik({
   mapPropsToValues: props => ({ email: "", password: "", genre: "default" }),
@@ -118,37 +124,27 @@ const UserForm = withFormik({
     if (values.confirmPassword !== values.password) {
       errors.confirmPassword = "Passwords must coincide!";
     }
+    if (props.status && props.status.userCreated === false) {
+      errors.userCreated = "Error creating user! Please try different email/password";
+    }
     return errors;
   },
   handleSubmit: async (
     values,
-    {
-      props,
-      setSubmitting,
-      setErrors /* setValues, setStatus, and other goodies */
-    }
+    { props, setSubmitting, setStatus, setErrors }
   ) => {
     // Pass all values except confirm Password
     const { confirmPassword, ...formValues } = { ...values };
     try {
-     const response = await axios.post("/create-user", formValues);
-     console.log(response);
+      const response = await axios.post("/create-user", formValues);
+      if (response.status === 201) {
+        setSubmitting(false);
+        setStatus({ userCreated: true });
+      }
     } catch (e) {
+      setErrors(e);
       console.error(e);
     }
-    
-    // LoginToMyApp(values).then(
-    //   user => {
-    //     setSubmitting(false);
-    //     // do whatevs...
-    //     // props.updateUser(user)
-    //   },
-    //   errors => {
-    //     setSubmitting(false);
-    //     // Maybe even transform your API's errors into the same shape as Formik's!
-    //     setErrors(transformMyApiErrors(errors));
-    //   }
-    // );
   }
 })(InnerForm);
 
