@@ -124,9 +124,6 @@ const UserForm = withFormik({
     if (values.confirmPassword !== values.password) {
       errors.confirmPassword = "Passwords must coincide!";
     }
-    if (props.status && props.status.userCreated === false) {
-      errors.userCreated = "Error creating user! Please try different email/password";
-    }
     return errors;
   },
   handleSubmit: async (
@@ -140,9 +137,17 @@ const UserForm = withFormik({
       if (response.status === 201) {
         setSubmitting(false);
         setStatus({ userCreated: true });
+      } else {
+        setErrors({
+          userCreated:
+            "Error creating user! Please try different email/password"
+        });
       }
     } catch (e) {
-      setErrors(e);
+      setErrors({
+        userCreated:
+          "Error creating user! Please try different email/password"
+      });
       console.error(e);
     }
   }
